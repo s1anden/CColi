@@ -1,0 +1,776 @@
+/**
+ *  A2  
+*/
+body.detach table.activity.quiz {
+    width:100%;
+}
+#fixedbottomnav {
+    text-align:center;
+    padding:4px 0;
+}
+#fixedbottomnav .pagenumbers {
+    text-align:left;
+}
+#fixedbottomnav button {
+    margin:0 5px 0 0;
+    vertical-align:middle;
+}
+#fixedbottomnav select {margin:1px 2px 3px;
+    font-size:14px;
+    vertical-align:middle;
+}
+
+#pagbtm button {
+    margin:0 .5em;
+}
+#pagbtm select {
+    margin:.45em 0;
+}
+
+#jumpto span {
+    font-weight:normal;
+}
+#jumpto select {
+    margin:0;
+    padding:0;
+    border:0;
+    background:none; 
+    *position:relative; 
+    *top:-5px;
+}
+#jumpto option span {
+    color:#666;
+}
+/*Preface*/
+table.activity.quiz td {
+    vertical-align:top;
+}
+table.activity.quiz > tr > td:first-child {
+    width:85px;
+}
+table.activity.quiz .purpose {
+    padding:85px 0 0;
+    width:85px;
+    color:#666;
+    font-weight:bold;
+    font-size:8px;
+    text-align:center;
+    background:url(../images/icon_quiz.png) no-repeat 2px 0;
+}
+div.calltoaction {
+    text-align:center;
+    margin:3em 0;
+}
+div.calltoaction a {
+    vertical-align:middle;
+}
+div.formaction {
+    margin:.3em 0 3em;
+}
+table.activity.quiz div.calltoaction .favored a {
+    margin:0 0 3em 0;
+    font-weight:bold;
+}            
+table.activity.quiz table.status th,
+table.activity.quiz table.status td {
+    vertical-align:baseline;
+}                
+.info,
+#info,    
+#scoreoverall {
+    margin:0 0 .5em;
+}    
+#info span,
+.a2student span,
+#scoreoverall span,
+.attempt span,
+.attemptstat span,
+#user_feedback span {
+    width:auto;
+}
+#overridedescription span {
+    width:auto;
+}
+#user_feedback var,
+#info span,
+#scoreoverall span,
+.attempt var {
+    padding-left:7em;
+    display:block;
+    font-style:normal;
+}    
+#info label,
+.a2student label,
+#scoreoverall label,
+.attempt label,
+.attemptstat label,
+#user_feedback label {
+    width:7em;
+    float:left;
+    clear:left;
+}
+#scoreoverall span var {
+    font:35px Arial, Helvetica, sans-serif;
+    color:black;
+}
+.gBar {
+    width:175px;
+    border:1px solid gray;
+    padding:1px;
+}
+.gBar var {
+    float:left;
+    height:1px;
+    font-size:1px;
+    padding:2px 0;
+}
+.gBar var.green {
+    background:#6cab13;
+}
+.gBar var.gray {
+    background:#66727a;
+}
+form.addfeedback {
+    margin-left:7em;
+}
+.instructorfeedback {
+    background-color:#d8f0d1;
+    padding:.5em;
+}
+.a2student {
+    margin:.5em 0;
+}
+.partialscore {
+    color:#434E54;
+    font-size:95%;
+    font-style:italic;
+}
+.reviewattempt {
+    padding:.25em 0 .25em 7em;
+}
+/*Preface*/
+.attempts {
+    clear:left;
+}
+.attempts .attempt {
+    /*float:left;
+    width:45%;
+    margin-right:5%;*/
+}
+.attempts .attempt table {
+    width:100%;
+}
+/*Preface + DrillDown+Review */
+.attempt {
+    margin-bottom:.5em;
+}
+/*Drilldown+Review*/
+.attemptstat button {
+    margin-right:.5em;
+}
+.noresponse {
+    font-size:93%;
+    color:#665;
+    font-style:italic;
+    font-weight:normal;
+}
+#a2psw.braeburnBox {
+    border:1px solid #CC8066;
+    background-color:#F5E4DC;
+}
+/*Delivery*/
+table.quiz .purpose {
+    background:url(../images/icon_quiz.png) no-repeat 2px 0;
+}
+.delivery.score_override {
+    display:inline;
+    /*margin-left:1em;*/
+}
+form.overridequestionscore {
+    display:inline;
+}
+.late {
+    color:red;
+    font-weight: bold;
+}
+.notaccepted {
+    color:red;
+}
+.question_result {
+    text-align:right;
+}
+#question {
+    clear:left;
+    margin-top:.5em;
+}
+.a2question {
+    margin: 15px 0px 10px 0px !important; 
+    border: 1px solid #ccc; 
+    width: 99%;
+}
+.a2qHeader {
+    margin:0;
+    padding: 10px 0 0 0;
+    color: #fff; 
+    font-weight: bold; 
+    line-height:1.4em;
+    text-align: left; 
+    background:#D0D8DD url(../images/bg_a2.gif) repeat-y; 
+    border-right:1px solid #ccc;
+}
+.a2qLabel {
+    margin: 0 !important; 
+    padding: 0px 10px 0px 10px;
+}
+.a2scorebox {
+    margin: 0 !important; 
+    float: right !important; 
+    padding: 0px 10px 0px 10px;
+}
+.a2scoreHeaderBox {
+    margin:15px 7px 10px 0; 
+    border:1px solid #ccc;
+}
+.overridden {
+    text-decoration:line-through;
+    color:red;
+}
+.override_score {
+    font-weight:bold;
+}
+
+#checkanswer {
+    text-align:center;
+    margin:1em auto;
+}
+#oli-top > h2:first-child {
+    padding-top:0;
+}
+.instructions {
+    background:#FFF;
+    border:1px solid #ababab;
+    margin:10px auto;
+    padding:0 1em .5em;
+    width:67%;
+    font-size:92%;
+}
+/*#questions{}*/
+#questions.manytrue .question {
+    margin:1em 0;
+}
+.question.correct .qbody {
+    /*border-color:#8bc540;*/
+}
+.question.correct h2 {
+    /*background:url(../images/css/correct.gif) no-repeat left;
+    padding:0px 0px 0px 30px;*/ 
+}
+.question.incorrect .qbody {
+    /*border-color:#c54040;*/
+}
+.question.incorrect h2 { 
+    /*background:url(../images/css/incorrect.gif) no-repeat left;
+    padding:0px 0px 0px 30px;*/
+}
+.pointstotal .correct { 
+    background:url(../images/correct-sm.gif) no-repeat left; 
+    padding:0px 0px 0px 20px;
+}
+.pointstotal .incorrect {
+    background:url(../images/incorrect-sm.gif) no-repeat left; 
+    padding:0px 0px 0px 20px;
+}
+.question:focus {
+    outline:none;
+}
+.qbody {
+    padding:10px;
+    border:1px solid #CCC;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+}
+.question.focused .qbody {
+    border-color:#1371B2;
+    -moz-box-shadow: 0px 0px 5px #1371B2; 
+    -webkit-box-shadow: 0px 0px 5px #1371B2; 
+    box-shadow: 0px 0px 5px #1371B2;
+} 
+.question.error .qbody {
+    border-color:#FAAF3C; 
+    -moz-box-shadow: 0px 0px 5px #FAAF3C; 
+    -webkit-box-shadow: 0px 0px 5px #FAAF3C; 
+    box-shadow: 0px 0px 5px #FAAF3C;
+} 
+.a2instructions {
+    float:right;
+    width:160px;
+    border-left:1px solid #9aa1a6;
+}
+.tech,
+.points {
+    color:#434E54;
+    font-size:75%;
+    padding:.2em .2em 0;
+}
+.pointsparts {
+    border-bottom:1px solid #ababab;
+    display:table;
+    border-collapse:collapse;
+}
+.pointsparts div {
+    padding:.2em;
+}
+.pointstotal {
+    padding:.2em;
+}
+.question.correct .pointstotal { 
+    color:#356933;
+} 
+.question.incorrect .pointstotal { 
+    color:#c54040;
+} 
+.highlighter {
+    background:url(../images/icons/16x16/actions/highlightpart.gif) no-repeat 0 3px;
+    padding:3px 0 3px 20px;
+    text-decoration:none;
+}
+a.highlighter:active,
+a.highlighter:focus {
+    text-decoration:underline;
+    /*background-color:yellow;
+    color:#284090;*/
+}
+.a2qInputs {
+    padding:.5em 175px .5em 5px;
+}
+.part_header a.cross, .part_header a.check {
+    text-decoration:none;
+}
+.a2qFeedback {
+    margin:2em auto 0;
+    padding-top:.5em;
+    border-top:4px double /*#6cab13*/ #B2B2B2;
+}
+.hidden,
+.contentAreaHidden {
+    display:none;
+}
+.a2hints {
+    float:right;
+}
+.showhint {
+    text-align:right;
+    padding:.5em 0 .5em .5em;
+} 
+.hintnav a {
+    background-color:#26992F;
+    color:white;
+    cursor:pointer;
+    text-decoration:none;
+    font-weight:bold;
+    padding:.3em .3em .5em .5em;
+    border:2px solid #26992F;border-width:2px 2px 0 0;
+    -moz-border-radius-bottomleft:5px;
+    -wekbit-border-bottom-left-radius:5px;
+    border-radius-bottomleft:5px;
+}    
+.hintnav a:focus,
+.hintnav a:hover {
+    outline:none;
+    text-decoration:none;
+    /*background-color:#C3EA89;
+    border-color:#C3EA89;
+    color:#1f662f;*/
+}
+.a2hint {
+    background-color:#E0F2CE;
+    border:1px solid #26992F;
+    padding:0 .5em 1em;
+    margin-bottom:.5em;
+}
+.a2hint h5 {
+    padding:.65em 0 .9em;
+}    
+.a2hint .hintnav a {
+    float:right;
+    position:relative;
+    right:-.5em;
+}
+.a2hint .hintnav a.prev {
+    background-position:3px 50%;
+    margin-right:0.3em;
+    padding:.5em .5em .5em 22px;
+}
+.a2hint .hintnav a.next {
+    border-width:1px 1px 0 0;
+    padding:.3em 1.35em .5em .5em;
+}
+.a2hint .hintnav a.close {
+    border-width:1px 1px 0 0;
+    padding:.3em .6em .5em;
+}
+    
+.placeholder {
+    visibility:hidden;
+}
+    
+/* Multiple Choice */
+.multiplechoice ol {
+    list-style-type:upper-alpha !important;
+    font-weight:bold;
+}
+.multiplechoice ol li {
+    padding:0;
+}
+.multiplechoice ol li.a2input {
+    border-bottom:1px solid #fff;
+}
+.multiplechoice.enabled ol li.a2input:hover {
+    background-color:#FFF7D6;
+}
+.multiplechoice.enabled ol li.a2input:hover span {
+    cursor:pointer;
+}
+.multiplechoice ol li.a2input.checked:hover,
+.multiplechoice ol li.a2input.checked {
+    background-color:#EBF1FA;
+    font-weight:bold;
+}
+.recorded span,
+.multiplechoice ol li.a2input.checked span {
+    color:#336;
+}
+/*.multiplechoice ol li span{font-weight:normal;display:block;padding:.5em .5em .5em .5em} MathJax Render issue with container spans*/
+
+/* Fill in the Blank */
+.fillinblank input[type="text"] {
+    width:10.5ex;
+}
+select.fill_in_the_blank {
+    max-width:100%;
+    padding:0;
+}
+.recorded {
+    background-color:#EBF1FA;
+    color:#336;
+}
+.recorded option {
+    font-weight:normal;
+    border:0;
+}
+        
+/*Type: Text*/
+.a2text {
+    line-height:3em;
+}
+.a2textareabox {
+    background-color:#EBF1FA;
+    color:#336;
+}
+span.a2textareabox {
+    display:inline-block;
+    padding:0 .25em;
+    line-height:2em;
+}
+
+/* Ordering */
+ul.ordering-list { 
+    padding:0;
+}
+ul.ordering-list li {
+    margin:10px 0; 
+    padding:4px 8px 4px 4px; 
+    list-style:decimal;
+    background-color:#EBF1FA;
+    font-weight:bold;
+}
+ul.ordering-list li span {
+    color:#336;
+}
+ul.ordering-list.deliver li { 
+    padding:4px 8px 4px 14px;
+    max-width:518px;
+    cursor:n-resize; 
+    list-style:none;  
+    background:#ddd url(/branding/images/bullet2.gif) repeat-y  4px 2px; 
+    color:#333; 
+    border:1px solid #999;
+}
+ul.ordering-list.deliver  li:focus {
+    background-color:#FFF7D6;
+    font-weight:bold;
+}
+ul.ordering-list.deliver li span {
+    color:#333;
+    font-weight:normal;
+}
+#questions .shortanswer {
+    margin:10px 0;
+}
+/*caqu: prevent this on delivery mode...*/
+#questions .a2essay {
+    background-color:#EBF1FA;
+    color:#336;
+    font:125%/125% serif;
+    padding:0 0.25em;
+}
+/* Quiz Toolbar */
+#a2controls {
+    position:fixed;
+    top:0;left:0;
+    width:100%;
+    text-align:center;
+    padding:5px 10px;
+    max-height:30px;
+    background:#ebf0d1;
+    border-bottom:2px solid #667;
+}
+#a2controls #timer {
+    display:inline;
+    top:6px;
+    right:30px;
+    padding:0 .5em
+}
+#a2controls #timer strong {
+    font-size:120%;
+}
+#a2controls #timer input {
+    padding:0 .5em;
+}
+.highlighted {
+    background-color:#ffcb3f;
+    border:1px solid #ccaa00;
+}
+/*grading*/
+.setfeedback textarea,
+input.qcomment {
+    font-size:12px;
+    width:140px;
+}
+/* Debugging tools */
+.caqu_red {
+    border:3px double red;
+}
+.caqu_orange {
+    border:3px double orange;
+}
+.caqu_yellow {
+    border:3px double yellow;
+}
+.caqu_green {
+    border:3px double green;
+}
+.caqu_blue {
+    border:3px double blue;
+}
+.caqu_brown {
+    border:3px double #8F4000;
+}
+.caqu_violet {
+    border:3px double #6A009F;
+}
+/* NL: New SubNavigation */
+.pagbtmfixed { 
+    padding:12px 0.35em 0.5em 0.5em !important; 
+    margin:0px 0.5em 12px 0.5em !important;
+}
+.linkContain { 
+    float:left; 
+    margin:0px 10px; 
+    padding:5px 0px 0px 0px;
+}
+.subJump { 
+    position:relative; 
+    top:2px; 
+    display:inline-block;
+    height:25px; 
+    width:auto; 
+    margin:0px 10px 0px 10px; 
+    float:left;
+}
+.subJump a.prevBtn { 
+    background:url(../images/prev-button-as.png) no-repeat center; 
+    float:left; 
+    margin:0px 2px 0px 0px; 
+    cursor:pointer;
+}	
+.nextBtn { 
+    background:url(../images/next-button.png) no-repeat center; 
+    float:right; 
+    *float:none; 
+    padding:0px; 
+    cursor:pointer;
+}
+.nextTest { 
+    display:block !important; 
+    background:url(../images/css/nav-next.gif) no-repeat; 
+    width:15px; 
+    height:30px; 
+    position:absolute;
+    margin:7px 0px 0px 585px; 
+    cursor:pointer;
+}
+.nextBtn, .prevBtn { 
+    border:0px; 
+    width:12px; 
+    height:25px; 
+    display:inline-block; 
+    opacity:0.5;
+}
+.nextBtn:hover, .prevBtn:hover { 
+    opacity:1;
+}
+#jumpto	{ 
+    position:relative; 
+    top:3px; 
+    margin:0px;
+}
+.asBtn { 
+    display:inline-block; 
+    font-family:Georgia, "Times New Roman", Times, serif; 
+    font-size:14px; 
+    text-decoration:none; 
+    color:#FFF !important; 
+    display:block; 
+    background:url(../images/asBtna.png) no-repeat right; 
+    max-width:549px;
+    height:30px; 
+    margin:0px 10px 0px 10px; 
+    padding:0px 10px 0px 0px; 
+    text-decoration:none !important; 
+    line-height:14px !important;
+    float:left;
+}
+.asBtn.cover { 
+    float:none; 
+    display:inline-block;
+}
+.assessment_error .asBtn,.calltoaction.status .asBtn { 
+    margin:0px 10px 0px 0px;
+}
+button.asBtn { 
+    font-family:Georgia, "Times New Roman", Times, serif; 
+    font-size:14px; 
+    color:#FFF !important; 
+    background:url(../images/asBtna.png) no-repeat right; 
+    max-width:549px; 
+    float:left; 
+    height:30px; 
+    margin:0px 10px; 
+    padding:0px 7px; 
+    text-decoration:none !important; 
+    line-height:14px !important; 
+    border:none;
+}
+button.asBtn span { 
+    padding:9px 0 7px 10px; 
+    position:relative; 
+    top:-1px; 
+    background:url(../images/asBtn.png) no-repeat; 
+    text-shadow: 0px -1px 0px #28526F; 
+    letter-spacing:0.06em;
+}
+.asBtn span	{ 
+    background:url(../images/asBtn.png) no-repeat; 
+    display:block; 
+    padding:8px 0 8px 10px;
+    text-shadow: 0px -1px 0px #28526F;
+    letter-spacing:0.06em;
+}
+.asBtn:hover { 
+    color:#a6d9fc;
+}
+.hoverError { 
+    position:absolute; 
+    margin:-42px 0px 0px 0px; 
+    color:#F00; 
+    font-size:10px; 
+    display:block; 
+    font-family:Verdana, Geneva, sans-serif;
+}
+#pagbtmForm	{ 
+    padding:5px 0px 5px 0px; 
+    overflow:hidden;
+}
+.startson { }
+.closeson { }
+.oneclick.off { 
+    opacity:0.5; 
+    pointer-events: none;
+}
+h4.attempt { 
+    margin:1em 0px 0.5em 111px;
+}
+.graded	{
+    border: 1px solid #FAAF3C; 
+    background: #FDE697; 
+    display: block;
+    margin:0px 0px 5px 0px; 
+    padding:5px 10px 5px 10px; 
+    font-size:12px; 
+    letter-spacing:0.06em;
+}
+#popup .contain { 
+    margin:0px auto 100px auto;
+}
+.save.oneclick { 
+    display:inline-block; 
+    font-size:13px;
+}
+.asBtn.save.oneclick { 
+    font-size:14px; 
+    margin:0px 10px; 
+    padding:0px 10px 0px 0px;
+}
+.submit.oneclick { 
+    display:inline-block;
+    font-size:13px;
+    padding:0px 0px 0px 5px; 
+    margin:0px 0px 0px 5px; 
+    border-left:1px solid #666;
+}	
+
+/*
+#info,.delivery	{ 
+    overflow:auto;
+}
+#info .scheduled,.delivery .attempt	{ 
+    overflow:auto; 
+    margin:5px 0px 5px 0px;
+}
+#info .infoExtra { 
+    float:right; 
+    width:80%;
+}
+#info .infoExtra span { 
+    display:block;
+}
+.info label	{ 
+    float:left; 
+    display:block;
+    width:154px;
+}*/
+
+/*
+.info div span { 
+    display:block; 
+    float:right; 
+    width:80%;
+}
+.score label { 
+    display:block; 
+    float:left; 
+    width:154px;
+}	
+.score span	{ 
+    display:inline !important;
+    width:auto !important; 
+    float:none !important;
+}
+#scoreoverall label { 
+    width:141px;
+}
+#scoreoverall .scorevalue { 
+    float:left !important;
+}*/
