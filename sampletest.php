@@ -227,141 +227,306 @@
 				<form id="multiple-choice" method="get" action="sampletest.php">
 					<h1>Beginning to Code Questions</h1>
 
+
 					<div class="multiple-choice-wrapper">
+						<?php
+							$a_status = "unchecked";
+							$b_status = "unchecked";
+							$c_status = "unchecked";
+							$selected_answer = $_GET['samp01'];
+							if ($selected_answer == 'A'){
+								$a_status = "checked";
+							}
+							else if ($selected_answer == 'B'){
+								$b_status = 'checked';
+							}
+							else if ($selected_answer == 'C'){
+								$c_status = 'checked';
+							}
+						?>
 						<h3 class="question-number">Question 1</h3>
 						<div class="question-wrapper">
 							<p>The universal gas constant is approximately 0.0821 L atm mol<sup>-1</sup> K<sup>-1</sup>. How many significant figures are given here?</p>
 							<div class="multiple-choice-options">
 								<ol class="multiple-choice">
 									<li>
-										<label for="samp01"><input type="radio" name="samp01" value="A">  3</label>
+										<label for="samp01"><input type="radio" name="samp01" value="A" <?PHP print $a_status; ?>
+											>  3</label>
 									</li>
 
 									<li>
-										<label for="samp01"><input type="radio" name="samp01" value="B">  4</label>
+										<label for="samp01"><input type="radio" name="samp01" value="B" <?PHP print $b_status; ?>
+											>  4</label>
 									</li>
 
 									<li>
-										<label for="samp01"><input type="radio" name="samp01" value="C">  5</label>
+										<label for="samp01"><input type="radio" name="samp01" value="C" <?PHP print $c_status; ?>
+											>  5</label>
 									</li>
 								</ol>
 							</div>
 						</div>
+
+						<div class="multiple-choice-results">
+							<?php
+								if ($selected_answer == "A"){
+									print "Correct.";
+								}
+								else {
+									print "Incorrect. The right answer was A.";
+								}
+							?>
+						</div>
 					</div>
 
 					<div class="multiple-choice-wrapper">
+						<?php
+							$a_status = "unchecked";
+							$b_status = "unchecked";
+							$c_status = "unchecked";
+							$d_status = "unchecked";
+							$e_status = "unchecked";
+							$selected_answer = $_GET['samp01'];
+							if ($selected_answer == 'A'){
+								$a_status = "checked";
+							}
+							else if ($selected_answer == 'B'){
+								$b_status = 'checked';
+							}
+							else if ($selected_answer == 'C'){
+								$c_status = 'checked';
+							}
+							else if ($selected_answer == 'D'){
+								$d_status = 'checked';
+							}
+							else if ($selected_answer == 'E'){
+								$e_status = 'checked';
+							}
+						?>
 						<h3 class="question-number">Question 2</h3>
 						<div class="question-wrapper">
 							<p>What is the correct answer (reported to the proper number of significant figures) to the following?</p>
+							<p>6.3 * 3.25 = ______________</p>
 							<div class="multiple-choice-options">
 								<ol class="multiple-choice">
 									<li>
-										<label for="samp02"><input type="radio" name="samp02" value="A">  20</label>
+										<label for="samp02"><input type="radio" name="samp02" value="A" <?PHP print $a_status; ?>>  20</label>
 									</li>
 
 									<li>
-										<label for="samp02"><input type="radio" name="samp02" value="B">  20.475</label>
+										<label for="samp02"><input type="radio" name="samp02" value="B" <?PHP print $b_status; ?>>  20.475</label>
 									</li>
 
 									<li>
-										<label for="samp02"><input type="radio" name="samp02" value="C">  20.48</label>
+										<label for="samp02"><input type="radio" name="samp02" value="C" <?PHP print $c_status; ?>>  20.48</label>
 									</li>
 
 									<li>
-										<label for="samp02"><input type="radio" name="samp02" value="D">  20.5</label>
+										<label for="samp02"><input type="radio" name="samp02" value="D" <?PHP print $d_status; ?>>  20.5</label>
 									</li>
 
 									<li>
-										<label for="samp02"><input type="radio" name="samp02" value="E">  21</label>
+										<label for="samp02"><input type="radio" name="samp02" value="E" <?PHP print $e_status; ?>>  21</label>
 									</li>
 								</ol>
 							</div>
 						</div>
+
+
+						<div class="multiple-choice-results">
+							<?php
+								if ($selected_answer == "A"){
+									print "Correct.";
+								}
+								else {
+									print "Incorrect. The right answer was A.";
+								}
+							?>
+						</div>
 					</div>
 
 					<div class="multiple-choice-wrapper">
+						<?php
+							$a_status = "unchecked";
+							$b_status = "unchecked";
+							$c_status = "unchecked";
+							$d_status = "unchecked";
+							$e_status = "unchecked";
+							$selected_answer = $_GET['samp01'];
+							if ($selected_answer == 'A'){
+								$a_status = "checked";
+							}
+							else if ($selected_answer == 'B'){
+								$b_status = 'checked';
+							}
+							else if ($selected_answer == 'C'){
+								$c_status = 'checked';
+							}
+							else if ($selected_answer == 'D'){
+								$d_status = 'checked';
+							}
+						?>
 						<h3 class="question-number">Question 3</h3>
 						<div class="question-wrapper">
 							<p>You add 0.6 ounces of milk to a cup with 8 ounces of coffee. How much liquid is now in the cup, to the correct amount of significant figures?</p>
 							<div class="multiple-choice-options">
 								<ol class="multiple-choice">
 									<li>
-										<label for="samp03"><input type="radio" name="samp03" value="A">  9 oz.</label>
+										<label for="samp03"><input type="radio" name="samp03" value="A" <?PHP print $a_status; ?>>  9 oz.</label>
 									</li>
 
 									<li>
-										<label for="samp03"><input type="radio" name="samp03" value="B">  8 oz.</label>
+										<label for="samp03"><input type="radio" name="samp03" value="B" <?PHP print $b_status; ?>>  8 oz.</label>
 									</li>
 
 									<li>
-										<label for="samp03"><input type="radio" name="samp03" value="C">  8.6 oz.</label>
+										<label for="samp03"><input type="radio" name="samp03" value="C" <?PHP print $c_status; ?>>  8.6 oz.</label>
 									</li>
 
 									<li>
-										<label for="samp03"><input type="radio" name="samp03" value="D">  8.60 oz.</label>
+										<label for="samp03"><input type="radio" name="samp03" value="D" <?PHP print $d_status; ?>>  8.60 oz.</label>
 									</li>
 								</ol>
 							</div>
 						</div>
+
+						<div class="multiple-choice-results">
+							<?php
+								if ($selected_answer == "A"){
+									print "Correct.";
+								}
+								else {
+									print "Incorrect. The right answer was A.";
+								}
+							?>
+						</div>
 					</div>
 
 					<div class="multiple-choice-wrapper">
+						<?php
+							$a_status = "unchecked";
+							$b_status = "unchecked";
+							$c_status = "unchecked";
+							$d_status = "unchecked";
+							$e_status = "unchecked";
+							$selected_answer = $_GET['samp01'];
+							if ($selected_answer == 'A'){
+								$a_status = "checked";
+							}
+							else if ($selected_answer == 'B'){
+								$b_status = 'checked';
+							}
+							else if ($selected_answer == 'C'){
+								$c_status = 'checked';
+							}
+							else if ($selected_answer == 'D'){
+								$d_status = 'checked';
+							}
+							else if ($selected_answer == 'E'){
+								$e_status = 'checked';
+							}
+						?>
 						<h3 class="question-number">Question 4</h3>
 						<div class="question-wrapper">
 							<p>A wooden object has a mass of 10.782 g and occupies a volume of 13.72 mL. What is the density of the object determined to an appropriate number of significant figures? (Hint: density = mass / volume)</p>
 							<div class="multiple-choice-options">
 								<ol class="multiple-choice">
 									<li>
-										<label for="samp04"><input type="radio" name="samp04" value="A">  8 x 10<sup>-1</sup> g/mL</label>
+										<label for="samp04"><input type="radio" name="samp04" value="A" <?PHP print $a_status; ?>>  8 x 10<sup>-1</sup> g/mL</label>
 									</li>
 
 									<li>
-										<label for="samp04"><input type="radio" name="samp04" value="B">  7.9 x 10<sup>-1</sup> g/mL</label>
+										<label for="samp04"><input type="radio" name="samp04" value="B" <?PHP print $b_status; ?>>  7.9 x 10<sup>-1</sup> g/mL</label>
 									</li>
 
 									<li>
-										<label for="samp04"><input type="radio" name="samp04" value="C">  7.86 x 10<sup>-1</sup> g/mL</label>
+										<label for="samp04"><input type="radio" name="samp04" value="C" <?PHP print $c_status; ?>>  7.86 x 10<sup>-1</sup> g/mL</label>
 									</li>
 
 									<li>
-										<label for="samp04"><input type="radio" name="samp04" value="D">  7.859 x 10<sup>-1</sup> g/mL</label>
+										<label for="samp04"><input type="radio" name="samp04" value="D" <?PHP print $d_status; ?>>  7.859 x 10<sup>-1</sup> g/mL</label>
 									</li>
 
 									<li>
-										<label for="samp04"><input type="radio" name="samp04" value="E">  7.8586 x 10<sup>-1</sup> g/mL</label>
+										<label for="samp04"><input type="radio" name="samp04" value="E" <?PHP print $e_status; ?>>  7.8586 x 10<sup>-1</sup> g/mL</label>
 									</li>
 								</ol>
 							</div>
 						</div>
+
+						<div class="multiple-choice-results">
+							<?php
+								if ($selected_answer == "D"){
+									print "Correct.";
+								}
+								else {
+									print "Incorrect. The right answer was D.";
+								}
+							?>
+						</div>
 					</div>
 
 					<div class="multiple-choice-wrapper">
+						<?php
+							$a_status = "unchecked";
+							$b_status = "unchecked";
+							$c_status = "unchecked";
+							$d_status = "unchecked";
+							$e_status = "unchecked";
+							$selected_answer = $_GET['samp01'];
+							if ($selected_answer == 'A'){
+								$a_status = "checked";
+							}
+							else if ($selected_answer == 'B'){
+								$b_status = 'checked';
+							}
+							else if ($selected_answer == 'C'){
+								$c_status = 'checked';
+							}
+							else if ($selected_answer == 'D'){
+								$d_status = 'checked';
+							}
+							else if ($selected_answer == 'E'){
+								$e_status = 'checked';
+							}
+						?>
 						<h3 class="question-number">Question 5</h3>
 						<div class="question-wrapper">
 							<p>Which of the following has the same number of significant figures as the number 1.00580?</p>
 							<div class="multiple-choice-options">
 								<ol class="multiple-choice">
 									<li>
-										<label for="samp05"><input type="radio" name="samp05">  2 x 10<sup>6</sup></label>
+										<label for="samp05"><input type="radio" name="samp05" <?PHP print $a_status; ?>>  2 x 10<sup>6</sup></label>
 									</li>
 
 									<li>
-										<label for="samp05"><input type="radio" name="samp05">  199.791</label>
+										<label for="samp05"><input type="radio" name="samp05" <?PHP print $b_status; ?>>  199.791</label>
 									</li>
 
 									<li>
-										<label for="samp05"><input type="radio" name="samp05">  8.66</label>
+										<label for="samp05"><input type="radio" name="samp05" <?PHP print $c_status; ?>>  8.66</label>
 									</li>
 
 									<li>
-										<label for="samp05"><input type="radio" name="samp05">  5.119</label>
+										<label for="samp05"><input type="radio" name="samp05" <?PHP print $d_status; ?>>  5.119</label>
 									</li>
 
 									<li>
-										<label for="samp05"><input type="radio" name="samp05">  100</label>
+										<label for="samp05"><input type="radio" name="samp05" <?PHP print $e_status; ?>>  100</label>
 									</li>
 								</ol>
 							</div>
+						</div>
+
+						<div class="multiple-choice-results">
+							<?php
+								if ($selected_answer == "B"){
+									print "Correct.";
+								}
+								else {
+									print "Incorrect. The right answer was B.";
+								}
+							?>
 						</div>
 					</div>
 					<input type="submit" value="submit" "onclick=validate();">	

@@ -1,0 +1,12 @@
+local-php-web-server
+Copyright (c) 2009-2010 Cyril Briquet
+
+Contact: cyril.briquet@canopeer.org
+
+local-php-web-server is free and open source software,
+licensed under GNU General Public License 3
+
+local-php-web-server depends on the following software libraries:
+* Jetty   6.1.15.pre0  licensed under Apache License 2.0
+* Quercus 3.0.15       licensed under GNU General Public License 3
+
