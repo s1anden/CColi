@@ -227,7 +227,6 @@
 				<form id="multiple-choice" method="get" action="sampletest.php">
 					<h1>Beginning to Code Questions</h1>
 
-
 					<div class="multiple-choice-wrapper">
 						<?php
 							$a_status = "unchecked";
@@ -529,6 +528,7 @@
 							?>
 						</div>
 					</div>
+
 					<input type="submit" value="submit" "onclick=validate();">	
 				</form>
 			</div>
