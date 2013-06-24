@@ -3,12 +3,68 @@
 	border-radius:10px;
 	padding:10px;
 	margin-top:10px;
+	position:relative;
 }
 
 .multiple-choice {
 	list-style-type:upper-alpha;
 }
 
-.multiple-choice > li {
+.hint {
+	position:absolute;
+	bottom:10px;
+	right:10px;
+}
 
+a.tooltip {
+	color:#3398FE;
+	text-decoration:none;
+	font-weight:bold;
+	position:relative;
+}
+
+a.tooltip span {
+	font-size: 10px;
+	position:absolute;
+	z-index:999;
+	white-space:pre-line;
+	bottom:9999px;
+	background:#333;
+	color:#e0e0e0;
+	padding:0px 7px;
+	line-height:16px;
+	opacity:0;
+	width:175px;
+	transition:opacity 0.4s ease-out;
+	left:-200px;
+	
+}
+
+a.tooltip span::before {
+	content:"";
+	display:block;
+	border-left:10px solid #333;
+	border-top:10px solid transparent;
+	position:absolute;
+	bottom:0px;
+	left:187px;
+	transition:opacity 0.4s ease-out;
+}
+
+a.tooltip:hover span {
+	opacity:1;
+	bottom:0px;
+}
+
+ol.multiple-choice li:hover {
+	background:#fdfdfd;
+}
+
+.drag-option {
+	width:100px;
+	height:20px;
+	line-height:20px;
+	text-align:center;
+	border:1px solid black;
+	cursor:pointer;
 }

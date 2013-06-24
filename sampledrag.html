@@ -26,7 +26,8 @@
 	<!-- favicon.ico -->
 	<link rel="icon" href="cclogo-fav.png" >
 
-
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.js"></script>
 	
 	<!--  stylesheet(s) -->
 
@@ -46,13 +47,23 @@
 	
 	<!--css3-mediaqueries-js - http://code.google.com/p/css3-mediaqueries-js/ - Enables media queries in some unsupported browsers-->
 	<!-- <script type="text/javascript" src="js/css3-mediaqueries.js"></script> -->
-	
-	<!-- and the java script to handle cross-browser embedding for java applets -->
-	<!-- http://stackoverflow.com/questions/4272666/embedding-java-applet-into-html-file -->
-	<!-- http://download.oracle.com/javase/6/docs/technotes/guides/jweb/deployment_advice.html -->
-	<script src="http://java.com/js/deployJava.js"></script>
-	<!-- <script src="http://chemcollective.org/assets/common/js/atlassian-deployJava.js" ></script>  -->
 
+	<!-- <script src="http://chemcollective.org/assets/common/js/atlassian-deployJava.js" ></script>  -->
+	<!-- allows draggable functioning -->
+	<script>
+		$(function() {
+			$("#sortable").sortable({
+				revert: true
+			});
+
+			$("#draggable").draggable({
+				connectToSortable: "#sortable",
+				helper: "clone",
+				revert: "invalid"
+			});
+			$("ul, li").disableSelection();
+		});
+	</script>
 
 </head>
 
@@ -181,6 +192,7 @@
 					</ul>
   				</li>
 			  	<li>
+				 
 				 	<h5><span>Resources by </span>Type</h5>
 				 	<ul>
 						<li>
@@ -223,164 +235,24 @@
 
 		<div id="content-wrapper">
 			<div id="content">
-				<form id="multiple-choice" method="get" action="sampletest.php">
-					<h1>Beginning to Code Questions</h1>
-
-					<div class="multiple-choice-wrapper">
-						<h3 class="question-number">Question 1</h3>
-						<div class="question-wrapper">
-							<div class="hint">
-								<a href='#' class='tooltip'>?<span>Remember, significant figures mean something blah blah blah blah blah blah blah blah</span></a>
-							</div>
-							
-							<p>The universal gas constant is approximately 0.0821 L atm mol<sup>-1</sup> K<sup>-1</sup>. How many significant figures are given here?</p>
-
-							<div class="multiple-choice-options">
-								<ol class="multiple-choice">
-									<li>
-										<label for="samp01"><input type="radio" name="samp01" value="A">  3</label>
-									</li>
-
-									<li>
-										<label for="samp01"><input type="radio" name="samp01" value="B">  4</label>
-									</li>
-
-									<li>
-										<label for="samp01"><input type="radio" name="samp01" value="C">  5</label>
-									</li>
-								</ol>
-							</div>
+				<form id="drag" method="get" action="sampledrag.php">
+					<div class="question-wrapper">
+						<div class="hint">
+								<a href='#' class='tooltip'>?<span>Hint hint hint hint hint</span></a>
 						</div>
+
+						<p>Based on this data, can you arrange the metals from least reactive to most reactive?</p>
+
+						<ul id="sortable">
+							<li class="drag-option">Zn</li>
+							<li class="drag-option">Cu</li>
+							<li class="drag-option">Sn</li>
+							<li class="drag-option">Mg</li>
+							<li class="drag-option">Ag</li>
+						</ul>
+						<p style="position:absolute;left:200px;top:45px;">Least reactive (reacts with no other metal ions)</p>
+						<p style="position:absolute;left:200px;top:200px;">Most reactive (reacts with all other metal ions)</p>
 					</div>
-
-					<div class="multiple-choice-wrapper">
-						<h3 class="question-number">Question 2</h3>
-						<div class="question-wrapper">
-							<div class="hint">
-								<a href='#' class='tooltip'>?<span>something about significant figures</span></a>
-							</div>
-							<p>What is the correct answer (reported to the proper number of significant figures) to the following?</p>
-							<div class="multiple-choice-options">
-								<ol class="multiple-choice">
-									<li>
-										<label for="samp02"><input type="radio" name="samp02" value="A">  20</label>
-									</li>
-
-									<li>
-										<label for="samp02"><input type="radio" name="samp02" value="B">  20.475</label>
-									</li>
-
-									<li>
-										<label for="samp02"><input type="radio" name="samp02" value="C">  20.48</label>
-									</li>
-
-									<li>
-										<label for="samp02"><input type="radio" name="samp02" value="D">  20.5</label>
-									</li>
-
-									<li>
-										<label for="samp02"><input type="radio" name="samp02" value="E">  21</label>
-									</li>
-								</ol>
-							</div>
-						</div>
-					</div>
-
-					<div class="multiple-choice-wrapper">
-						<h3 class="question-number">Question 3</h3>
-						<div class="question-wrapper">
-							<div class="hint">
-								<a href='#' class='tooltip'>?<span>something about significant figures, multiple lines?????</span></a>
-							</div>
-							<p>You add 0.6 ounces of milk to a cup with 8 ounces of coffee. How much liquid is now in the cup, to the correct amount of significant figures?</p>
-							<div class="multiple-choice-options">
-								<ol class="multiple-choice">
-									<li>
-										<label for="samp03"><input type="radio" name="samp03" value="A">  9 oz.</label>
-									</li>
-
-									<li>
-										<label for="samp03"><input type="radio" name="samp03" value="B">  8 oz.</label>
-									</li>
-
-									<li>
-										<label for="samp03"><input type="radio" name="samp03" value="C">  8.6 oz.</label>
-									</li>
-
-									<li>
-										<label for="samp03"><input type="radio" name="samp03" value="D">  8.60 oz.</label>
-									</li>
-								</ol>
-							</div>
-						</div>
-					</div>
-
-					<div class="multiple-choice-wrapper">
-						<h3 class="question-number">Question 4</h3>
-						<div class="question-wrapper">
-							<div class="hint">
-								<a href='#' class='tooltip'>?<span>something about significant figures, multiple lines?????</span></a>
-							</div>
-							<p>A wooden object has a mass of 10.782 g and occupies a volume of 13.72 mL. What is the density of the object determined to an appropriate number of significant figures? (Hint: density = mass / volume)</p>
-							<div class="multiple-choice-options">
-								<ol class="multiple-choice">
-									<li>
-										<label for="samp04"><input type="radio" name="samp04" value="A">  8 x 10<sup>-1</sup> g/mL</label>
-									</li>
-
-									<li>
-										<label for="samp04"><input type="radio" name="samp04" value="B">  7.9 x 10<sup>-1</sup> g/mL</label>
-									</li>
-
-									<li>
-										<label for="samp04"><input type="radio" name="samp04" value="C">  7.86 x 10<sup>-1</sup> g/mL</label>
-									</li>
-
-									<li>
-										<label for="samp04"><input type="radio" name="samp04" value="D">  7.859 x 10<sup>-1</sup> g/mL</label>
-									</li>
-
-									<li>
-										<label for="samp04"><input type="radio" name="samp04" value="E">  7.8586 x 10<sup>-1</sup> g/mL</label>
-									</li>
-								</ol>
-							</div>
-						</div>
-					</div>
-
-					<div class="multiple-choice-wrapper">
-						<h3 class="question-number">Question 5</h3>
-						<div class="question-wrapper">
-							<div class="hint">
-								<a href='#' class='tooltip'>?<span>something about significant figures, multiple lines?????</span></a>
-							</div>
-							<p>Which of the following has the same number of significant figures as the number 1.00580?</p>
-							<div class="multiple-choice-options">
-								<ol class="multiple-choice">
-									<li>
-										<label for="samp05"><input type="radio" name="samp05">  2 x 10<sup>6</sup></label>
-									</li>
-
-									<li>
-										<label for="samp05"><input type="radio" name="samp05">  199.791</label>
-									</li>
-
-									<li>
-										<label for="samp05"><input type="radio" name="samp05">  8.66</label>
-									</li>
-
-									<li>
-										<label for="samp05"><input type="radio" name="samp05">  5.119</label>
-									</li>
-
-									<li>
-										<label for="samp05"><input type="radio" name="samp05">  100</label>
-									</li>
-								</ol>
-							</div>
-						</div>
-					</div>
-					<input type="submit" value="submit" "onclick=validate();">	
 				</form>
 			</div>
 		</div>
