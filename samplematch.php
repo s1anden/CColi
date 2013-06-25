@@ -49,21 +49,18 @@
 	<script type="text/javascript">
 		$(window).load(function(){
 			$(function () {
-				$("#sortable").sortable({
-					revert:true,
-					update: function() {
-						var sortedList = $("#sortable").sortable("serialize");
-						$("#order").val(sortedList);
+				$(".draggable").draggable({snap: ".droppable", snapMode: "inner"});
+				$(".droppable").droppable({
+					tolerance:"touch",
+					drop:function(event,ui) {
+						$(this)
+							.html(ui.draggable.html());
+						$(ui.draggable)
+							.css("visibility","hidden");
+						$("input[name=" + this.id + "]")
+							.val(ui.draggable.id);
 					}
 				});
-
-				$("#draggable").draggable({
-					connectToSortable: "#sortable",
-					helper: "clone",
-					revert: "invalid"
-				});
-
-				$("ul, li").disableSelection();
 			});
 		});
 	</script>
@@ -236,28 +233,42 @@
 
 		<div id="content-wrapper">
 			<div id="content">
-				<form id="drag" method="get" action="sampledrag.php">
+				<form id="drag" method="get" action="samplematch.php">
 					<div class="question-wrapper">
 						<div class="hint">
 							<a href='#' class='tooltip'>?<span>Hint hint hint hint hint</span></a>
 						</div>
 
-						<p>Based on this data, can you arrange the metals from least reactive to most reactive?</p>
+						<p>Match the following labels to the diagram. You will not use one of the labels.</p>
+						<div class="match-image">
+							<img height="292px" width="400px" style="margin-left:100px;" src="galvanic-20cell-match.png"/>
+							<hr style="width:100px;transform:rotate(-50deg);-ms-transform:rotate(-50deg);-moz-transform:rotate(-50deg);-webkit-transform:rotate(-50deg);-o-transform:rotate(-50deg);bottom:118px;left:100px;"></hr>
+							<div class="droppable" id="drop_01" style="bottom:50px;"></div>
+							<hr style="width:50px;transform:rotate(60deg);-ms-transform:rotate(60deg);-moz-transform:rotate(60deg);-webkit-transform:rotate(60deg);-o-transform:rotate(60deg);bottom:250px;left:210px;"></hr>
+							<div class="droppable" id="drop_02" style="bottom:250px;left:75px;"></div>
+							<hr style="width:75px;transform:rotate(120deg);-ms-transform:rotate(120deg);-moz-transform:rotate(120deg);-webkit-transform:rotate(120deg);-o-transform:rotate(120deg);bottom:230px;left:310px;"></hr>
+							<div class="droppable" id="drop_03" style="bottom:250px;left:350px;"></div>
+							<hr style="width:75px;transform:rotate(-140deg);-ms-transform:rotate(-140deg);-moz-transform:rotate(-140deg);-webkit-transform:rotate(-140deg);-o-transform:rotate(-140deg);bottom:140px;left:431px;"></hr>
+							<div class="droppable" id="drop_04" style="bottom:100px;left:500px;"></div>
+							<hr style="width:75px;transform:rotate(-150deg);-ms-transform:rotate(-150deg);-moz-transform:rotate(-150deg);-moz-transform:rotate(-150deg);-webkit-transform:rotate(-150deg);-o-transform:rotate(-150deg);bottom:48px;left:401px;"></hr>
+							<div class="droppable" id="drop_05" style="bottom:25px;left:475px;"></div>
+						</div>
 
-						<ul id="sortable">
-							<li class="drag-option" id="drag_01">Zn</li>
-							<li class="drag-option" id="drag_02">Cu</li>
-							<li class="drag-option" id="drag_03">Sn</li>
-							<li class="drag-option" id="drag_04">Mg</li>
-							<li class="drag-option" id="drag_05">Ag</li>
-						</ul>
+						<div class="drag-options">
+							<div class="draggable" id="anode">Anode</div>
+							<div class="draggable" id="cathode">Cathode</div>
+							<div class="draggable" id="salt-bridge">Salt Bridge</div>
+							<div class="draggable" id="metal-salt">Metal Salt</div>
+							<div class="draggable" id="electrons-right">Electrons Flow >>></div>
+							<div class="draggable" id="electrongs-left">Electrons Flow <<<</div>
+						</div>
 
-						<p style="position:absolute;left:200px;top:45px;">Least reactive (reacts with no other metal ions)</p>
-						<p style="position:absolute;left:200px;top:200px;">Most reactive (reacts with all other metal ions)</p>
 					</div>
-
-					<input type="hidden" id="order" name="order" value=["drag_01","drag_02","drag_03","drag_04","drag_05"]>
-
+					<input type="hidden" name="drop_01" id="drop_01" value="">
+					<input type="hidden" name="drop_02" id="drop_02" value="">
+					<input type="hidden" name="drop_03" id="drop_03" value="">
+					<input type="hidden" name="drop_04" id="drop_04" value="">
+					<input type="hidden" name="drop_05" id="drop_05" value="">
 					<input type="submit" value="submit">
 				</form>
 

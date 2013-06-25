@@ -249,13 +249,23 @@
 						</ul>
 
 						<?php
-
+							$order = $_GET["order"];
 						?>
 
 						<p style="position:absolute;left:200px;top:45px;">Least reactive (reacts with no other metal ions)</p>
 						<p style="position:absolute;left:200px;top:200px;">Most reactive (reacts with all other metal ions)</p>
 					</div>
 				</form>
+
+				<div class="results">
+					<?php
+						if ($order == "drag[]=01&drag[]=02&drag[]=03&drag[]=04&drag[]=05") {
+							print "Correct!";
+						} else {
+							print "Incorrect. The correct order is Zn, Cu, Sn, Mg, Ag.";
+						}
+					?>
+				</div>
 			</div>
 		</div>
 

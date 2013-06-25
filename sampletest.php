@@ -266,7 +266,7 @@
 							</div>
 						</div>
 
-						<div class="multiple-choice-results">
+						<div class="results">
 							<?php
 								if ($selected_answer == "A"){
 									print "Correct.";
