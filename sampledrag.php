@@ -50,11 +50,7 @@
 		$(window).load(function(){
 			$(function () {
 				$("#sortable").sortable({
-					revert:true,
-					update: function() {
-						var sortedList = $("#sortable").sortable("serialize");
-						$("#order").val(sortedList);
-					}
+					revert:true
 				});
 
 				$("#draggable").draggable({
@@ -252,13 +248,13 @@
 							<li class="drag-option" id="drag_05">Ag</li>
 						</ul>
 
+						<?php
+
+						?>
+
 						<p style="position:absolute;left:200px;top:45px;">Least reactive (reacts with no other metal ions)</p>
 						<p style="position:absolute;left:200px;top:200px;">Most reactive (reacts with all other metal ions)</p>
 					</div>
-
-					<input type="hidden" id="order" name="order" value=["drag_01","drag_02","drag_03","drag_04","drag_05"]>
-
-					<input type="submit" value="submit">
 				</form>
 			</div>
 		</div>

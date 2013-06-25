@@ -11,7 +11,7 @@
 	<meta charset="utf-8">
 
 	<!-- makes all relative links to base url -->
-	<!-- <base href="http://chemcollective.org/"> <!--[if lte IE 6]></base><![endif]--> -->
+	<!-- <base href="http://chemcollective.org/"> <!--[if lte IE 6]></base><![endif]-->
 
 	<title>ChemCollective</title>
 	
@@ -24,7 +24,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<!-- favicon.ico -->
-	<link rel="icon" href="http://chemcollective.org/assets/common/images/styling/favicon.ico" >
+	<link rel="icon" href="favicon.png" >
 
 
 	
