@@ -1,6 +1,6 @@
 .question-wrapper {
-	border: 1px solid #B2C0CB;
-	border-radius:10px;
+	border: 1px dotted #B2C0CB;
+	border-radius:5px;
 	padding:10px;
 	margin-top:10px;
 	position:relative;
@@ -68,6 +68,7 @@ ol.multiple-choice li:hover {
 	text-align:center;
 	border:1px solid black;
 	cursor:pointer;
+	background:#fdfdfd;
 }
 
 .draggable {
@@ -75,6 +76,7 @@ ol.multiple-choice li:hover {
 	border:1px solid black;
 	padding:5px;
 	cursor:pointer;
+	background:#fdfdfd;
 }
 
 .match-image {
@@ -94,4 +96,20 @@ ol.multiple-choice li:hover {
 hr {
 	position:absolute;
 	border:3px solid black;
+}
+
+.question {
+	display:inline;
+}
+
+.results {
+	display:none;
+}
+
+.incorrect {
+	color:red;
+}
+
+.correct {
+	color:green;
 }

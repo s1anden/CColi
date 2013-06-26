@@ -47,25 +47,41 @@
 	<!-- <script src="http://chemcollective.org/assets/common/js/atlassian-deployJava.js" ></script>  -->
 	<!-- allows draggable functioning -->
 	<script type="text/javascript">
-		$(window).load(function(){
-			$(function () {
-				$("#sortable").sortable({
-					revert:true,
-					update: function() {
-						var sortedList = $("#sortable").sortable("serialize");
-						$("#order").val(sortedList);
-					}
-				});
-
-				$("#draggable").draggable({
-					connectToSortable: "#sortable",
-					helper: "clone",
-					revert: "invalid"
-				});
-
-				$("ul, li").disableSelection();
+		$(function () {
+			$(".sortable").sortable({
+				revert:true,
+				update: function() {
+					var sortedList = $(this).sortable("toArray");
+					$("input[name='"+$(this).attr('id').replace('sort-','')+"']").val(sortedList);
+				}
 			});
+
+			$("#draggable").draggable({
+				connectToSortable: ".sortable",
+				helper: "clone",
+				revert: "invalid"
+			});
+
+			$("ul, li").disableSelection();
 		});
+
+		var answers = {"samp01":["drag_05","drag_02","drag_03","drag_01","drag_04"]};
+		function checkAnswers() {
+			$(".question-wrapper").each(function(){
+				if (answers[$(this).attr('id')] == $("input[name='"+$(this).attr('id')+"']").val()) {
+					$("#results-"+$(this).attr('id')).css('display','inline').html("Correct!").addClass('correct');
+					$(".sortable").sortable("disable");
+				} else {
+					var order = "";
+					jQuery.each(answers[$(this).attr('id')],function() {
+						order += $("#"+this).html() + ", ";
+					});
+					$("#results-"+$(this).attr('id')).css('display','inline').html("Incorrect. The correct order is (from least to most reactive): " + order.substring(0,order.length-2)).addClass('incorrect');
+					$("#sort-"+$(this).attr('id')).sortable("disable");
+				}
+			});
+			return false;
+		}
 	</script>
 </head>
 <body>
@@ -236,15 +252,16 @@
 
 		<div id="content-wrapper">
 			<div id="content">
-				<form id="drag" method="get" action="sampledrag.php">
-					<div class="question-wrapper">
+				<form id="drag" onsubmit="return checkAnswers();">
+					<h3 class="question-number">Question 1</h3>
+					<div class="question-wrapper" id="samp01">
 						<div class="hint">
 							<a href='#' class='tooltip'>?<span>Hint hint hint hint hint</span></a>
 						</div>
 
-						<p>Based on this data, can you arrange the metals from least reactive to most reactive?</p>
+						<p class="question">Based on this data, can you arrange the metals from least reactive to most reactive?</p>
 
-						<ul id="sortable">
+						<ul class="sortable" id="sort-samp01">
 							<li class="drag-option" id="drag_01">Zn</li>
 							<li class="drag-option" id="drag_02">Cu</li>
 							<li class="drag-option" id="drag_03">Sn</li>
@@ -252,16 +269,19 @@
 							<li class="drag-option" id="drag_05">Ag</li>
 						</ul>
 
-						<p style="position:absolute;left:200px;top:45px;">Least reactive (reacts with no other metal ions)</p>
-						<p style="position:absolute;left:200px;top:200px;">Most reactive (reacts with all other metal ions)</p>
+						<p style="position:absolute;left:200px;top:30px;">Least reactive (reacts with no other metal ions)</p>
+						<p style="position:absolute;left:200px;top:185px;">Most reactive (reacts with all other metal ions)</p>
+						<div class="results" id="results-samp01"></div>
 					</div>
 
-					<input type="hidden" id="order" name="order" value=["drag_01","drag_02","drag_03","drag_04","drag_05"]>
+					<input type="hidden" name="samp01" value=["drag_01","drag_02","drag_03","drag_04","drag_05"]>
+
+					
 
 					<input type="submit" value="submit">
 				</form>
 
-				<div class="results"></div>
+				
 			</div>
 		</div>
 

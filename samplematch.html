@@ -47,33 +47,62 @@
 	<!-- <script src="http://chemcollective.org/assets/common/js/atlassian-deployJava.js" ></script>  -->
 	<!-- allows draggable functioning -->
 	<script type="text/javascript">
-		$(window).load(function(){
-			$(function () {
-				$(".draggable").draggable({snap: ".droppable", snapMode: "inner", containment: ".question-wrapper"});
-				$(".droppable").droppable({
-					tolerance:"touch",
-					drop:function(event,ui) {
-						$(this)
-							.html(ui.draggable.html());
-						$(ui.draggable)
-							.css("opacity","0.0");
-						$(":input[name='" + $(this).attr('id') + "']")
-							.val(ui.draggable.attr('id'));
-					},
-					out:function(event,ui) {
-						$(this)
-							.html("");
-						$(ui.draggable)
-							.css("opacity","1.0")
-							.css("width","auto")
-							.css("height","auto")
-							.css("padding","5px");
-						// $("input[name=" + ui.droppable.prop('id') + "]")
-						// 	.val("");
-					}
-				});
+		$(function () {
+			$(".draggable").draggable({snap: ".droppable", snapMode: "inner", containment: ".question-wrapper"});
+			$(".droppable").droppable({
+				tolerance:"touch",
+				drop:function(event,ui) {
+					$(this)
+						.html(ui.draggable.html())
+						.droppable('option','accept',ui.draggable);
+					$(ui.draggable)
+						.css("opacity","0.0");
+					$(":input[name='" + $(this).attr('id') + "']")
+						.val(ui.draggable.attr('id'));
+				},
+				out:function(event,ui) {
+					$(this)
+						.html("")
+						.droppable('option','accept','.draggable');
+					$(ui.draggable)
+						.css("opacity","1.0")
+						.css("width","auto")
+						.css("height","auto")
+						.css("padding","5px");
+					// $("input[name=" + ui.droppable.prop('id') + "]")
+					// 	.val("");
+				}
 			});
 		});
+
+		var answers = {"samp01":{"drop_01":"anode","drop_02":"electrons-right","drop_03":"salt-bridge","drop_04":"cathode","drop_05":"metal-salt"}};
+		function checkAnswers() {
+			$(".question-wrapper").each(function(){
+				var complete = true;
+				var correct = true;
+				var order = "";
+				jQuery.each(answers[$(this).attr('id')], function(key,value) {
+					if ($("input[name='"+key+"']").val() == "") {
+						complete = false;
+					} else if ($("input[name='"+key+"']").val() != value) {
+						correct = false;
+					}
+
+					order += $("#"+value).html() + ", ";
+				});
+
+				if (complete == false) {
+					$("#results-"+$(this).attr('id')).css('display','inline').html("Please be sure to fill in all of the blanks.").addClass('incorrect');
+				} else if (correct == false) {
+					$("#results-"+$(this).attr('id')).css('display','inline').html("Incorrect. The correct order is (clockwise, beginning at bottom left): " + order.substring(0,order.length-2)).addClass('incorrect');
+					$(".draggable").draggable("disable");
+				} else {
+					$("#results-"+$(this).attr('id')).css('display','inline').html("Correct!").addClass("correct");
+					$(".draggable").draggable("disable");
+				}
+			});
+			return false;
+		}
 	</script>
 </head>
 <body>
@@ -244,13 +273,14 @@
 
 		<div id="content-wrapper">
 			<div id="content">
-				<form id="drag" method="get" action="samplematch.php">
-					<div class="question-wrapper">
+				<form id="drag" onsubmit="return checkAnswers();">
+					<h3 class="question-number">Question 1</h3>
+					<div class="question-wrapper" id="samp01">
 						<div class="hint">
 							<a href='#' class='tooltip'>?<span>Hint hint hint hint hint</span></a>
 						</div>
 
-						<p>Match the following labels to the diagram. You will not use one of the labels.</p>
+						<p class="question">Match the following labels to the diagram. You will not use all of the labels.</p>
 						<div class="match-image">
 							<img height="292px" width="400px" style="margin-left:100px;" src="galvanic-20cell-match.png"/>
 							<hr style="width:100px;transform:rotate(-50deg);-ms-transform:rotate(-50deg);-moz-transform:rotate(-50deg);-webkit-transform:rotate(-50deg);-o-transform:rotate(-50deg);bottom:118px;left:100px;"></hr>
@@ -271,19 +301,22 @@
 							<div class="draggable" id="salt-bridge">Salt Bridge</div>
 							<div class="draggable" id="metal-salt">Metal Salt</div>
 							<div class="draggable" id="electrons-right">Electrons Flow >>></div>
-							<div class="draggable" id="electrongs-left">Electrons Flow <<<</div>
+							<div class="draggable" id="electrons-left">Electrons Flow <<<</div>
 						</div>
-
+						<input type="hidden" name="drop_01" id="inputdrop_01" value="">
+						<input type="hidden" name="drop_02" id="inputdrop_02" value="">
+						<input type="hidden" name="drop_03" id="inputdrop_03" value="">
+						<input type="hidden" name="drop_04" id="inputdrop_04" value="">
+						<input type="hidden" name="drop_05" id="inputdrop_05" value="">
+						
+						<div class="results" id="results-samp01"></div>
 					</div>
-					<input type="hidden" name="drop_01" id="inputdrop_01" value="">
-					<input type="hidden" name="drop_02" id="inputdrop_02" value="">
-					<input type="hidden" name="drop_03" id="inputdrop_03" value="">
-					<input type="hidden" name="drop_04" id="inputdrop_04" value="">
-					<input type="hidden" name="drop_05" id="inputdrop_05" value="">
+					
+
 					<input type="submit" value="submit">
 				</form>
 
-				<div class="results"></div>
+				
 			</div>
 		</div>
 
