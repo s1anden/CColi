@@ -56,7 +56,7 @@
 				$("#draggable").draggable({
 					connectToSortable: "#sortable",
 					helper: "clone",
-					revert: "invalid"
+					revert: "invalid",
 				});
 
 				$("ul, li").disableSelection();

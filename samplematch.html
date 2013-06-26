@@ -49,16 +49,27 @@
 	<script type="text/javascript">
 		$(window).load(function(){
 			$(function () {
-				$(".draggable").draggable({snap: ".droppable", snapMode: "inner"});
+				$(".draggable").draggable({snap: ".droppable", snapMode: "inner", containment: ".question-wrapper"});
 				$(".droppable").droppable({
 					tolerance:"touch",
 					drop:function(event,ui) {
 						$(this)
 							.html(ui.draggable.html());
 						$(ui.draggable)
-							.css("visibility","hidden");
-						$("input[name=" + ui.droppable.prop('id') + "]")
-							.val(ui.draggable.prop('id'));
+							.css("opacity","0.0");
+						$(":input[name='" + $(this).attr('id') + "']")
+							.val(ui.draggable.attr('id'));
+					},
+					out:function(event,ui) {
+						$(this)
+							.html("");
+						$(ui.draggable)
+							.css("opacity","1.0")
+							.css("width","auto")
+							.css("height","auto")
+							.css("padding","5px");
+						// $("input[name=" + ui.droppable.prop('id') + "]")
+						// 	.val("");
 					}
 				});
 			});
@@ -264,11 +275,11 @@
 						</div>
 
 					</div>
-					<input type="hidden" name="drop_01" id="drop_01" value="">
-					<input type="hidden" name="drop_02" id="drop_02" value="">
-					<input type="hidden" name="drop_03" id="drop_03" value="">
-					<input type="hidden" name="drop_04" id="drop_04" value="">
-					<input type="hidden" name="drop_05" id="drop_05" value="">
+					<input type="hidden" name="drop_01" id="inputdrop_01" value="">
+					<input type="hidden" name="drop_02" id="inputdrop_02" value="">
+					<input type="hidden" name="drop_03" id="inputdrop_03" value="">
+					<input type="hidden" name="drop_04" id="inputdrop_04" value="">
+					<input type="hidden" name="drop_05" id="inputdrop_05" value="">
 					<input type="submit" value="submit">
 				</form>
 
