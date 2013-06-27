@@ -7,7 +7,7 @@
 	overflow:hidden;
 }
 
-.multiple-choice {
+ol.multiple-choice {
 	list-style-type:upper-alpha;
 }
 
@@ -79,7 +79,7 @@ ol.multiple-choice li:hover {
 	background:#fdfdfd;
 }
 
-.match-image {
+.match-container {
 	position:relative;
 }
 
@@ -93,6 +93,18 @@ ol.multiple-choice li:hover {
 	line-height:40px;
 }
 
+.match-list .droppable {
+	position:static;
+	margin:auto;
+	display:inline-block;
+
+}
+
+.match-list > div {
+	position:relative;
+	margin-bottom:10px;
+}
+
 hr {
 	position:absolute;
 	border:3px solid black;
@@ -104,6 +116,7 @@ hr {
 
 .results {
 	display:none;
+	margin-top:10px;
 }
 
 .incorrect {
@@ -112,4 +125,44 @@ hr {
 
 .correct {
 	color:green;
+}
+
+#score {
+
+}
+
+.reaction-table {
+	margin:auto;
+	margin-top:10px;
+	width:90%;
+	text-align:center;
+	border:2px solid #B2C0CB;
+}
+
+.reaction-table td, .reaction-table th {
+	border:2px solid #B2C0CB;
+	padding-right:5px;
+	padding-left:5px;
+}
+
+.select-all {
+	list-style-type:upper-alpha;
+}
+
+.select-all li {
+	display:inline-block;
+	width:40%;
+}
+
+.definition {
+	display:inline-block;
+	position:absolute;
+	width:500px;
+	top:-25px;
+	padding-left:5px;
+}
+
+.definition p {
+	vertical-align:top;
+	top:0px;
 }

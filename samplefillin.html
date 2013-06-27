@@ -55,19 +55,19 @@
 
 	<!-- checks answers -->
 	<script>
-		var answers = {"samp01":"A","samp02":"A","samp03":"A","samp04":"D","samp05":"B"};
+		var answers = {"samp01":["five","5","5.0"]};
 		function checkAnswers() {
 			var numQuestions = $(".question-wrapper").length;
 			var numCorrect = 0;
 			$(".question-wrapper").each(function(){
-				if (answers[$(this).attr('id')] == $("input[name='"+$(this).attr('id')+"']:checked").val()) {
+				if (jQuery.inArray($("input[name='"+$(this).attr('id')+"']").val(),answers[$(this).attr('id')]) != -1) {
 					$("#results-"+$(this).attr('id')).css('display','block').html("Correct!").addClass('correct');
 					$("input[name='"+$(this).attr('id')+"']").attr('disabled','disabled');
 					numCorrect++;
-				} else if ($("input[name='"+$(this).attr('id')+"']:checked").length == 0){
-					$("#results-"+$(this).attr('id')).css('display','block').html("Please select an answer.").addClass('incorrect');
+				} else if ($("input[name='"+$(this).attr('id')+"']").val() == ""){
+					$("#results-"+$(this).attr('id')).css('display','block').html("Please enter an answer.").addClass('incorrect');
 				} else {
-					$("#results-"+$(this).attr('id')).css('display','block').html("Incorrect. The correct answer is " + answers[$(this).attr('id')] + ".").addClass('incorrect');
+					$("#results-"+$(this).attr('id')).css('display','block').html("Incorrect. The correct answer is " + answers[$(this).attr('id')][0] + ".").addClass('incorrect');
 					$("input[name='"+$(this).attr('id')+"']").attr('disabled','disabled');
 				}
 			});
@@ -258,162 +258,12 @@
 							<a href='#' class='tooltip'>?<span>Remember, significant figures mean something blah blah blah blah blah blah blah blah</span></a>
 						</div>
 						
-						<p class="question">The universal gas constant is approximately 0.0821 L atm mol<sup>-1</sup> K<sup>-1</sup>. How many significant figures are given here?</p>
+						<p class="question">Possible answers are five, 5, 5.0.</p>
 
-						<div class="multiple-choice-options">
-							<ol class="multiple-choice">
-								<li>
-									<label for="samp01"><input type="radio" name="samp01" value="A">  3</label>
-								</li>
-
-								<li>
-									<label for="samp01"><input type="radio" name="samp01" value="B">  4</label>
-								</li>
-
-								<li>
-									<label for="samp01"><input type="radio" name="samp01" value="C">  5</label>
-								</li>
-							</ol>
-						</div>
+						<input type="text" name="samp01">
 						
 						<div class="results" id="results-samp01"></div>
-					</div>
-
-
-					<h3 class="question-number">Question 2</h3>
-					<div class="question-wrapper" id="samp02">
-						<div class="hint">
-							<a href='#' class='tooltip'>?<span>something about significant figures</span></a>
-						</div>
-						<p class="question">What is the correct answer (reported to the proper number of significant figures) to the following?</p>
-						<p>6.3 * 3.25 = _________</p>
-						<div class="multiple-choice-options">
-							<ol class="multiple-choice">
-								<li>
-									<label for="samp02"><input type="radio" name="samp02" value="A">  20</label>
-								</li>
-
-								<li>
-									<label for="samp02"><input type="radio" name="samp02" value="B">  20.475</label>
-								</li>
-
-								<li>
-									<label for="samp02"><input type="radio" name="samp02" value="C">  20.48</label>
-								</li>
-
-								<li>
-									<label for="samp02"><input type="radio" name="samp02" value="D">  20.5</label>
-								</li>
-
-								<li>
-									<label for="samp02"><input type="radio" name="samp02" value="E">  21</label>
-								</li>
-							</ol>
-						</div>
-						
-						<div class="results" id="results-samp02"></div>
-					</div>
-
-					<h3 class="question-number">Question 3</h3>
-					<div class="question-wrapper" id="samp03">
-						<div class="hint">
-							<a href='#' class='tooltip'>?<span>something about significant figures, multiple lines?????</span></a>
-						</div>
-						<p class="question">You add 0.6 ounces of milk to a cup with 8 ounces of coffee. How much liquid is now in the cup, to the correct amount of significant figures?</p>
-						<div class="multiple-choice-options">
-							<ol class="multiple-choice">
-								<li>
-									<label for="samp03"><input type="radio" name="samp03" value="A">  9 oz.</label>
-								</li>
-
-								<li>
-									<label for="samp03"><input type="radio" name="samp03" value="B">  8 oz.</label>
-								</li>
-
-								<li>
-									<label for="samp03"><input type="radio" name="samp03" value="C">  8.6 oz.</label>
-								</li>
-
-								<li>
-									<label for="samp03"><input type="radio" name="samp03" value="D">  8.60 oz.</label>
-								</li>
-							</ol>
-						</div>
-
-						<div class="results" id="results-samp03"></div>
-					</div>
-
-					
-
-					<h3 class="question-number">Question 4</h3>
-					<div class="question-wrapper" id="samp04">
-						<div class="hint">
-							<a href='#' class='tooltip'>?<span>something about significant figures, multiple lines?????</span></a>
-						</div>
-						<p class="question">A wooden object has a mass of 10.782 g and occupies a volume of 13.72 mL. What is the density of the object determined to an appropriate number of significant figures? (Hint: density = mass / volume)</p>
-						<div class="multiple-choice-options">
-							<ol class="multiple-choice">
-								<li>
-									<label for="samp04"><input type="radio" name="samp04" value="A">  8 x 10<sup>-1</sup> g/mL</label>
-								</li>
-
-								<li>
-									<label for="samp04"><input type="radio" name="samp04" value="B">  7.9 x 10<sup>-1</sup> g/mL</label>
-								</li>
-
-								<li>
-									<label for="samp04"><input type="radio" name="samp04" value="C">  7.86 x 10<sup>-1</sup> g/mL</label>
-								</li>
-
-								<li>
-									<label for="samp04"><input type="radio" name="samp04" value="D">  7.859 x 10<sup>-1</sup> g/mL</label>
-								</li>
-
-								<li>
-									<label for="samp04"><input type="radio" name="samp04" value="E">  7.8586 x 10<sup>-1</sup> g/mL</label>
-								</li>
-							</ol>
-						</div>
-
-						<div class="results" id="results-samp04"></div>
-					</div>
-
-					
-
-					<h3 class="question-number">Question 5</h3>
-					<div class="question-wrapper" id="samp05">
-						<div class="hint">
-							<a href='#' class='tooltip'>?<span>something about significant figures, multiple lines?????</span></a>
-						</div>
-						<p class="question">Which of the following has the same number of significant figures as the number 1.00580?</p>
-						<div class="multiple-choice-options">
-							<ol class="multiple-choice">
-								<li>
-									<label for="samp05"><input type="radio" name="samp05" value="A">  2 x 10<sup>6</sup></label>
-								</li>
-
-								<li>
-									<label for="samp05"><input type="radio" name="samp05" value="B">  199.791</label>
-								</li>
-
-								<li>
-									<label for="samp05"><input type="radio" name="samp05" value="C">  8.66</label>
-								</li>
-
-								<li>
-									<label for="samp05"><input type="radio" name="samp05" value="D">  5.119</label>
-								</li>
-
-								<li>
-									<label for="samp05"><input type="radio" name="samp05" value="E">  100</label>
-								</li>
-							</ol>
-						</div>
-
-						<div class="results" id="results-samp05"></div>
-					</div>
-
-					
+					</div>					
 
 					<input type="submit" value="submit">	
 				</form>

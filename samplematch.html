@@ -48,7 +48,7 @@
 	<!-- allows draggable functioning -->
 	<script type="text/javascript">
 		$(function () {
-			$(".draggable").draggable({snap: ".droppable", snapMode: "inner", containment: ".question-wrapper"});
+			$(".draggable").draggable({snap: ".droppable", snapMode: "inner", containment: "parent"});
 			$(".droppable").droppable({
 				tolerance:"touch",
 				drop:function(event,ui) {
@@ -75,8 +75,10 @@
 			});
 		});
 
-		var answers = {"samp01":{"drop_01":"anode","drop_02":"electrons-right","drop_03":"salt-bridge","drop_04":"cathode","drop_05":"metal-salt"}};
+		var answers = {"samp01":{"samp01-drop_01":"anode","samp01-drop_02":"electrons-right","samp01-drop_03":"salt-bridge","samp01-drop_04":"cathode","samp01-drop_05":"metal-salt"},"samp02":{"samp02-drop_01":"dipole","samp02-drop_02":"acid","samp02-drop_03":"titration"}};
 		function checkAnswers() {
+			var numQuestions = $(".question-wrapper").length;
+			var numCorrect = 0;
 			$(".question-wrapper").each(function(){
 				var complete = true;
 				var correct = true;
@@ -92,15 +94,18 @@
 				});
 
 				if (complete == false) {
-					$("#results-"+$(this).attr('id')).css('display','inline').html("Please be sure to fill in all of the blanks.").addClass('incorrect');
+					$("#results-"+$(this).attr('id')).css('display','block').html("Please be sure to fill in all of the blanks.").addClass('incorrect');
 				} else if (correct == false) {
-					$("#results-"+$(this).attr('id')).css('display','inline').html("Incorrect. The correct order is (clockwise, beginning at bottom left): " + order.substring(0,order.length-2)).addClass('incorrect');
-					$(".draggable").draggable("disable");
+					$("#results-"+$(this).attr('id')).css('display','block').html("Incorrect. The correct order is (clockwise, beginning at bottom left): " + order.substring(0,order.length-2)).addClass('incorrect');
+					$("" + $(this).attr('id') + " .draggable").draggable("disable");
 				} else {
-					$("#results-"+$(this).attr('id')).css('display','inline').html("Correct!").addClass("correct");
-					$(".draggable").draggable("disable");
+					$("#results-"+$(this).attr('id')).css('display','block').html("Correct!").addClass("correct");
+					numCorrect++;
+					$($(this).attr('id') + " .draggable").draggable("disable");
 				}
 			});
+			$("#score").html("Score: " + numCorrect + " / " + numQuestions);
+			window.scrollTo(0,0);
 			return false;
 		}
 	</script>
@@ -274,6 +279,8 @@
 		<div id="content-wrapper">
 			<div id="content">
 				<form id="drag" onsubmit="return checkAnswers();">
+					<div id="score"></div>
+
 					<h3 class="question-number">Question 1</h3>
 					<div class="question-wrapper" id="samp01">
 						<div class="hint">
@@ -281,37 +288,74 @@
 						</div>
 
 						<p class="question">Match the following labels to the diagram. You will not use all of the labels.</p>
-						<div class="match-image">
+						<div class="match-container">
 							<img height="292px" width="400px" style="margin-left:100px;" src="galvanic-20cell-match.png"/>
 							<hr style="width:100px;transform:rotate(-50deg);-ms-transform:rotate(-50deg);-moz-transform:rotate(-50deg);-webkit-transform:rotate(-50deg);-o-transform:rotate(-50deg);bottom:118px;left:100px;"></hr>
-							<div class="droppable" id="drop_01" style="bottom:50px;"></div>
+							<div class="droppable" id="samp01-drop_01" style="bottom:50px;"></div>
 							<hr style="width:50px;transform:rotate(60deg);-ms-transform:rotate(60deg);-moz-transform:rotate(60deg);-webkit-transform:rotate(60deg);-o-transform:rotate(60deg);bottom:250px;left:210px;"></hr>
-							<div class="droppable" id="drop_02" style="bottom:250px;left:75px;"></div>
+							<div class="droppable" id="samp01-drop_02" style="bottom:250px;left:75px;"></div>
 							<hr style="width:75px;transform:rotate(120deg);-ms-transform:rotate(120deg);-moz-transform:rotate(120deg);-webkit-transform:rotate(120deg);-o-transform:rotate(120deg);bottom:230px;left:310px;"></hr>
-							<div class="droppable" id="drop_03" style="bottom:250px;left:350px;"></div>
+							<div class="droppable" id="samp01-drop_03" style="bottom:250px;left:350px;"></div>
 							<hr style="width:75px;transform:rotate(-140deg);-ms-transform:rotate(-140deg);-moz-transform:rotate(-140deg);-webkit-transform:rotate(-140deg);-o-transform:rotate(-140deg);bottom:140px;left:431px;"></hr>
-							<div class="droppable" id="drop_04" style="bottom:100px;left:500px;"></div>
+							<div class="droppable" id="samp01-drop_04" style="bottom:100px;left:500px;"></div>
 							<hr style="width:75px;transform:rotate(-150deg);-ms-transform:rotate(-150deg);-moz-transform:rotate(-150deg);-moz-transform:rotate(-150deg);-webkit-transform:rotate(-150deg);-o-transform:rotate(-150deg);bottom:48px;left:401px;"></hr>
-							<div class="droppable" id="drop_05" style="bottom:25px;left:475px;"></div>
+							<div class="droppable" id="samp01-drop_05" style="bottom:25px;left:475px;"></div>
 						</div>
 
-						<div class="drag-options">
-							<div class="draggable" id="anode">Anode</div>
-							<div class="draggable" id="cathode">Cathode</div>
-							<div class="draggable" id="salt-bridge">Salt Bridge</div>
-							<div class="draggable" id="metal-salt">Metal Salt</div>
-							<div class="draggable" id="electrons-right">Electrons Flow >>></div>
-							<div class="draggable" id="electrons-left">Electrons Flow <<<</div>
-						</div>
-						<input type="hidden" name="drop_01" id="inputdrop_01" value="">
-						<input type="hidden" name="drop_02" id="inputdrop_02" value="">
-						<input type="hidden" name="drop_03" id="inputdrop_03" value="">
-						<input type="hidden" name="drop_04" id="inputdrop_04" value="">
-						<input type="hidden" name="drop_05" id="inputdrop_05" value="">
+						
+						<div class="draggable" id="anode">Anode</div>
+						<div class="draggable" id="cathode">Cathode</div>
+						<div class="draggable" id="salt-bridge">Salt Bridge</div>
+						<div class="draggable" id="metal-salt">Metal Salt</div>
+						<div class="draggable" id="electrons-right">Electrons Flow >>></div>
+						<div class="draggable" id="electrons-left">Electrons Flow <<<</div>
+						
+
+						<input type="hidden" name="samp01-drop_01" id="samp01-inputdrop_01" value="">
+						<input type="hidden" name="samp01-drop_02" id="samp01-inputdrop_02" value="">
+						<input type="hidden" name="samp01-drop_03" id="samp01-inputdrop_03" value="">
+						<input type="hidden" name="samp01-drop_04" id="samp01-inputdrop_04" value="">
+						<input type="hidden" name="samp01-drop_05" id="samp01-inputdrop_05" value="">
 						
 						<div class="results" id="results-samp01"></div>
 					</div>
 					
+					<h3 class="question-number">Question 2</h3>
+					<div class="question-wrapper" id="samp02">
+						<div class="hint">
+							<a href='#' class='tooltip'>?<span>Hint hint hint hint hint</span></a>
+						</div>
+
+						<p class="question">Match the terms on the left to the corresponding definitions on the right.</p>
+						<div class="match-container">
+							<ul class="match-list">
+								<div>
+									<div class="droppable" id="samp02-drop_01"></div>
+									<div class="definition"><p>Refers to the separation of charge between two covalently bonded atoms.</p></div>
+								</div>
+								<div>
+									<div class="droppable" id="samp02-drop_02"></div>
+									<div class="definition"><p>A substance that produces H+(aq) ions in aqueous solution.</p></div>
+								</div>
+								<div>
+									<div class="droppable" id="samp02-drop_03"></div>
+									<div class="definition"><p>A procedure in which one solution is added to another solution until the chemical reactin between the two solutes is complete; the concentration of one solution is known and that of the other is unknown.</p></div>
+								</div>
+							</ul>
+						</div>
+
+						<div class="draggable" id="acid">Acid</div>
+						<div class="draggable" id="titration">Titration</div>
+						<div class="draggable" id="dipole">Dipole</div>
+						
+						<input type="hidden" name="samp02-drop_01" id="samp02-inputdrop_01" value="">
+						<input type="hidden" name="samp02-drop_02" id="samp02-inputdrop_02" value="">
+						<input type="hidden" name="samp02-drop_03" id="samp02-inputdrop_03" value="">
+						<input type="hidden" name="samp02-drop_04" id="samp02-inputdrop_04" value="">
+						<input type="hidden" name="samp02-drop_05" id="samp02-inputdrop_05" value="">
+						
+						<div class="results" id="results-samp02"></div>
+					</div>
 
 					<input type="submit" value="submit">
 				</form>

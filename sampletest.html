@@ -26,7 +26,8 @@
 	<!-- favicon.ico -->
 	<link rel="icon" href="favicon.png" >
 
-
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 	
 	<!--  stylesheet(s) -->
 
@@ -52,30 +53,11 @@
 	<!-- http://download.oracle.com/javase/6/docs/technotes/guides/jweb/deployment_advice.html -->
 	<script src="http://java.com/js/deployJava.js"></script>
 	<!-- <script src="http://chemcollective.org/assets/common/js/atlassian-deployJava.js" ></script>  -->
-
-	<!-- checks answers -->
 	<script>
-		var answers = {"samp01":"A","samp02":"A","samp03":"A","samp04":"D","samp05":"B"};
-		function checkAnswers() {
-			var numQuestions = $(".question-wrapper").length;
-			var numCorrect = 0;
-			$(".question-wrapper").each(function(){
-				if (answers[$(this).attr('id')] == $("input[name='"+$(this).attr('id')+"']:checked").val()) {
-					$("#results-"+$(this).attr('id')).css('display','block').html("Correct!").addClass('correct');
-					$("input[name='"+$(this).attr('id')+"']").attr('disabled','disabled');
-					numCorrect++;
-				} else if ($("input[name='"+$(this).attr('id')+"']:checked").length == 0){
-					$("#results-"+$(this).attr('id')).css('display','block').html("Please select an answer.").addClass('incorrect');
-				} else {
-					$("#results-"+$(this).attr('id')).css('display','block').html("Incorrect. The correct answer is " + answers[$(this).attr('id')] + ".").addClass('incorrect');
-					$("input[name='"+$(this).attr('id')+"']").attr('disabled','disabled');
-				}
-			});
-			$("#score").html("Score: " + numCorrect + " / " + numQuestions);
-			window.scrollTo(0,0);
-			return false;
-		}
+		var answers = {"samp01":"A","samp02":{"samp02-drop_01":"anode","samp02-drop_02":"electrons-right","samp02-drop_03":"salt-bridge","samp02-drop_04":"cathode","samp02-drop_05":"metal-salt"},"samp03":{"samp03-drop_01":"dipole","samp03-drop_02":"acid","samp03-drop_03":"titration"},"samp04":["A","D","E"],"samp05":["samp05-drag_05","samp05-drag_02","samp05-drag_03","samp05-drag_01","samp05-drag_04"],"samp06":["five","5","5.0"]};
 	</script>
+	<!-- checks answers -->
+	<script src="autograding.js"></script>
 
 
 </head>
@@ -247,170 +229,222 @@
 
 		<div id="content-wrapper">
 			<div id="content">
-				<form id="multiple-choice" onsubmit="return checkAnswers();">
-					<h1>Beginning to Code Questions</h1>
+				<form onsubmit="return checkAnswers();">
+					<h1>Sample Test</h1>
 
 					<div id="score"></div>
 
 					<h3 class="question-number">Question 1</h3>
-					<div class="question-wrapper" id="samp01">
+					<div class="question-wrapper multiple-choice" id="samp01">
 						<div class="hint">
 							<a href='#' class='tooltip'>?<span>Remember, significant figures mean something blah blah blah blah blah blah blah blah</span></a>
 						</div>
 						
 						<p class="question">The universal gas constant is approximately 0.0821 L atm mol<sup>-1</sup> K<sup>-1</sup>. How many significant figures are given here?</p>
 
-						<div class="multiple-choice-options">
-							<ol class="multiple-choice">
-								<li>
-									<label for="samp01"><input type="radio" name="samp01" value="A">  3</label>
-								</li>
+						<ol class="multiple-choice">
+							<li>
+								<label for="samp01"><input type="radio" name="samp01" value="A">  3</label>
+							</li>
 
-								<li>
-									<label for="samp01"><input type="radio" name="samp01" value="B">  4</label>
-								</li>
+							<li>
+								<label for="samp01"><input type="radio" name="samp01" value="B">  4</label>
+							</li>
 
-								<li>
-									<label for="samp01"><input type="radio" name="samp01" value="C">  5</label>
-								</li>
-							</ol>
-						</div>
+							<li>
+								<label for="samp01"><input type="radio" name="samp01" value="C">  5</label>
+							</li>
+						</ol>
 						
-						<div class="results" id="results-samp01"></div>
+						<div class="results" id="results-samp01">Incorrect. The correct answer is A.</div>
 					</div>
 
 
 					<h3 class="question-number">Question 2</h3>
-					<div class="question-wrapper" id="samp02">
+					<div class="question-wrapper match" id="samp02">
 						<div class="hint">
-							<a href='#' class='tooltip'>?<span>something about significant figures</span></a>
+							<a href='#' class='tooltip'>?<span>Hint hint hint hint hint</span></a>
 						</div>
-						<p class="question">What is the correct answer (reported to the proper number of significant figures) to the following?</p>
-						<p>6.3 * 3.25 = _________</p>
-						<div class="multiple-choice-options">
-							<ol class="multiple-choice">
-								<li>
-									<label for="samp02"><input type="radio" name="samp02" value="A">  20</label>
-								</li>
 
-								<li>
-									<label for="samp02"><input type="radio" name="samp02" value="B">  20.475</label>
-								</li>
-
-								<li>
-									<label for="samp02"><input type="radio" name="samp02" value="C">  20.48</label>
-								</li>
-
-								<li>
-									<label for="samp02"><input type="radio" name="samp02" value="D">  20.5</label>
-								</li>
-
-								<li>
-									<label for="samp02"><input type="radio" name="samp02" value="E">  21</label>
-								</li>
-							</ol>
+						<p class="question">Match the following labels to the diagram. You will not use all of the labels.</p>
+						<div class="match-container">
+							<img height="292px" width="400px" style="margin-left:100px;" src="galvanic-20cell-match.png"/>
+							<hr style="width:100px;transform:rotate(-50deg);-ms-transform:rotate(-50deg);-moz-transform:rotate(-50deg);-webkit-transform:rotate(-50deg);-o-transform:rotate(-50deg);bottom:118px;left:100px;"></hr>
+							<div class="droppable" id="samp02-drop_01" style="bottom:50px;"></div>
+							<hr style="width:50px;transform:rotate(60deg);-ms-transform:rotate(60deg);-moz-transform:rotate(60deg);-webkit-transform:rotate(60deg);-o-transform:rotate(60deg);bottom:250px;left:210px;"></hr>
+							<div class="droppable" id="samp02-drop_02" style="bottom:250px;left:75px;"></div>
+							<hr style="width:75px;transform:rotate(120deg);-ms-transform:rotate(120deg);-moz-transform:rotate(120deg);-webkit-transform:rotate(120deg);-o-transform:rotate(120deg);bottom:230px;left:310px;"></hr>
+							<div class="droppable" id="samp02-drop_03" style="bottom:250px;left:350px;"></div>
+							<hr style="width:75px;transform:rotate(-140deg);-ms-transform:rotate(-140deg);-moz-transform:rotate(-140deg);-webkit-transform:rotate(-140deg);-o-transform:rotate(-140deg);bottom:140px;left:431px;"></hr>
+							<div class="droppable" id="samp02-drop_04" style="bottom:100px;left:500px;"></div>
+							<hr style="width:75px;transform:rotate(-150deg);-ms-transform:rotate(-150deg);-moz-transform:rotate(-150deg);-moz-transform:rotate(-150deg);-webkit-transform:rotate(-150deg);-o-transform:rotate(-150deg);bottom:48px;left:401px;"></hr>
+							<div class="droppable" id="samp02-drop_05" style="bottom:25px;left:475px;"></div>
 						</div>
+
 						
-						<div class="results" id="results-samp02"></div>
+						<div class="draggable" id="anode">Anode</div>
+						<div class="draggable" id="cathode">Cathode</div>
+						<div class="draggable" id="salt-bridge">Salt Bridge</div>
+						<div class="draggable" id="metal-salt">Metal Salt</div>
+						<div class="draggable" id="electrons-right">Electrons Flow >>></div>
+						<div class="draggable" id="electrons-left">Electrons Flow <<<</div>
+						
+
+						<input type="hidden" name="samp02-drop_01" id="samp02-inputdrop_01" value="">
+						<input type="hidden" name="samp02-drop_02" id="samp02-inputdrop_02" value="">
+						<input type="hidden" name="samp02-drop_03" id="samp02-inputdrop_03" value="">
+						<input type="hidden" name="samp02-drop_04" id="samp02-inputdrop_04" value="">
+						<input type="hidden" name="samp02-drop_05" id="samp02-inputdrop_05" value="">
+						
+						<div class="results" id="results-samp02">Incorrect. The correct answers are (clockwise, from bottom left): Anode, Electrons Flow >>>, Salt Bridge, Cathode, Metal Salt.</div>
 					</div>
-
-					<h3 class="question-number">Question 3</h3>
-					<div class="question-wrapper" id="samp03">
-						<div class="hint">
-							<a href='#' class='tooltip'>?<span>something about significant figures, multiple lines?????</span></a>
-						</div>
-						<p class="question">You add 0.6 ounces of milk to a cup with 8 ounces of coffee. How much liquid is now in the cup, to the correct amount of significant figures?</p>
-						<div class="multiple-choice-options">
-							<ol class="multiple-choice">
-								<li>
-									<label for="samp03"><input type="radio" name="samp03" value="A">  9 oz.</label>
-								</li>
-
-								<li>
-									<label for="samp03"><input type="radio" name="samp03" value="B">  8 oz.</label>
-								</li>
-
-								<li>
-									<label for="samp03"><input type="radio" name="samp03" value="C">  8.6 oz.</label>
-								</li>
-
-								<li>
-									<label for="samp03"><input type="radio" name="samp03" value="D">  8.60 oz.</label>
-								</li>
-							</ol>
-						</div>
-
-						<div class="results" id="results-samp03"></div>
-					</div>
-
 					
+					<h3 class="question-number">Question 3</h3>
+					<div class="question-wrapper match" id="samp03">
+						<div class="hint">
+							<a href='#' class='tooltip'>?<span>Hint hint hint hint hint</span></a>
+						</div>
+
+						<p class="question">Match the terms on the left to the corresponding definitions on the right.</p>
+						<div class="match-container">
+							<ul class="match-list">
+								<div>
+									<div class="droppable" id="samp03-drop_01"></div>
+									<div class="definition"><p>Refers to the separation of charge between two covalently bonded atoms.</p></div>
+								</div>
+								<div>
+									<div class="droppable" id="samp03-drop_02"></div>
+									<div class="definition"><p>A substance that produces H+(aq) ions in aqueous solution.</p></div>
+								</div>
+								<div>
+									<div class="droppable" id="samp03-drop_03"></div>
+									<div class="definition"><p>A procedure in which one solution is added to another solution until the chemical reactin between the two solutes is complete; the concentration of one solution is known and that of the other is unknown.</p></div>
+								</div>
+							</ul>
+						</div>
+
+						<div class="draggable" id="acid">Acid</div>
+						<div class="draggable" id="titration">Titration</div>
+						<div class="draggable" id="dipole">Dipole</div>
+						
+						<input type="hidden" name="samp03-drop_01" id="samp03-inputdrop_01" value="">
+						<input type="hidden" name="samp03-drop_02" id="samp03-inputdrop_02" value="">
+						<input type="hidden" name="samp03-drop_03" id="samp03-inputdrop_03" value="">
+						
+						<div class="results" id="results-samp03">Incorrect. The correct answers are (from top to bottom): Dipole, Acid, Titration.</div>
+					</div>
 
 					<h3 class="question-number">Question 4</h3>
-					<div class="question-wrapper" id="samp04">
+					<div class="question-wrapper select-all" id="samp04">
 						<div class="hint">
-							<a href='#' class='tooltip'>?<span>something about significant figures, multiple lines?????</span></a>
+							<a href='#' class='tooltip'>?<span>Look at the table of data to determine which experiments have conflicting results in terms of their activities.</span></a>
 						</div>
-						<p class="question">A wooden object has a mass of 10.782 g and occupies a volume of 13.72 mL. What is the density of the object determined to an appropriate number of significant figures? (Hint: density = mass / volume)</p>
-						<div class="multiple-choice-options">
-							<ol class="multiple-choice">
-								<li>
-									<label for="samp04"><input type="radio" name="samp04" value="A">  8 x 10<sup>-1</sup> g/mL</label>
-								</li>
+						
+						<p class="question">A student performed a set of experiments similar to the ones in the above simulation and recorded the following data. The instructor reviewed the student's data and suggested that some of the experiments should be repeated. Based upon the table of results below, which experiments should be repeated? (check all that apply)</p>
 
-								<li>
-									<label for="samp04"><input type="radio" name="samp04" value="B">  7.9 x 10<sup>-1</sup> g/mL</label>
-								</li>
+						<table class="reaction-table">
+							<thead>
+								<tr>
+									<th></th>
+									<th>Fe</th>
+									<th>Pb</th>
+									<th>Cu</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th>Fe<sup>2+</sup></th>
+									<td>-- --</td>
+									<td>Deposit on metal</td>
+									<td>No reaction</td>
+								</tr>
+								<tr>
+									<th>Pb<sup>2+</sup></th>
+									<td>Dark deposit on metal</td>
+									<td>-- --</td>
+									<td>No reaction</td>
+								</tr>
+								<tr>
+									<th>Cu<sup>2+</sup></th>
+									<td>Dark deposit on metal, Soln changes color</td>
+									<td>Dark deposit on metal, Soln changes color</td>
+									<td>-- --</td>
+								</tr>
+							</tbody>
+						</table>
 
-								<li>
-									<label for="samp04"><input type="radio" name="samp04" value="C">  7.86 x 10<sup>-1</sup> g/mL</label>
-								</li>
+						</table>
 
-								<li>
-									<label for="samp04"><input type="radio" name="samp04" value="D">  7.859 x 10<sup>-1</sup> g/mL</label>
-								</li>
+						<ol class="select-all">
+							<li>
+								A.  <label for="samp04"><input type="checkbox" name="samp04" value="A">  Fe metal strip in Zn<sup>+2</sup></label>
+							</li>
 
-								<li>
-									<label for="samp04"><input type="radio" name="samp04" value="E">  7.8586 x 10<sup>-1</sup> g/mL</label>
-								</li>
-							</ol>
-						</div>
+							<li>
+								B.  <label for="samp04"><input type="checkbox" name="samp04" value="B">  Cu metal strip in Fe<sup>+2</sup></label>
+							</li>
 
-						<div class="results" id="results-samp04"></div>
+							<li>
+								C.  <label for="samp04"><input type="checkbox" name="samp04" value="C">  Zn metal strip in Cu<sup>+2</sup></label>
+							</li>
+
+							<li>
+								D.  <label for="samp04"><input type="checkbox" name="samp04" value="D">  Fe metal strip in Cu<sup>+2</sup></label>
+							</li>
+
+							<li>
+								E.  <label for="samp04"><input type="checkbox" name="samp04" value="E">  Cu metal strip in Zn<sup>+2</sup></label>
+							</li>
+
+							<li>
+								F.  <label for="samp04"><input type="checkbox" name="samp04" value="F">  Zn metal strip in Fe<sup>+2</sup></label>
+							</li>
+						</ol>
+						
+						<div class="results" id="results-samp04">Incorrect. The correct answers are A, D, and E.</div>
 					</div>
 
 					
 
 					<h3 class="question-number">Question 5</h3>
-					<div class="question-wrapper" id="samp05">
+					<div class="question-wrapper arrange" id="samp05">
 						<div class="hint">
-							<a href='#' class='tooltip'>?<span>something about significant figures, multiple lines?????</span></a>
-						</div>
-						<p class="question">Which of the following has the same number of significant figures as the number 1.00580?</p>
-						<div class="multiple-choice-options">
-							<ol class="multiple-choice">
-								<li>
-									<label for="samp05"><input type="radio" name="samp05" value="A">  2 x 10<sup>6</sup></label>
-								</li>
-
-								<li>
-									<label for="samp05"><input type="radio" name="samp05" value="B">  199.791</label>
-								</li>
-
-								<li>
-									<label for="samp05"><input type="radio" name="samp05" value="C">  8.66</label>
-								</li>
-
-								<li>
-									<label for="samp05"><input type="radio" name="samp05" value="D">  5.119</label>
-								</li>
-
-								<li>
-									<label for="samp05"><input type="radio" name="samp05" value="E">  100</label>
-								</li>
-							</ol>
+							<a href='#' class='tooltip'>?<span>Hint hint hint hint hint</span></a>
 						</div>
 
-						<div class="results" id="results-samp05"></div>
+						<p class="question">Based on this data, can you arrange the metals from least reactive to most reactive?</p>
+
+						<ul class="sortable" id="sort-samp05">
+							<li class="drag-option" id="samp05-drag_01">Zn</li>
+							<li class="drag-option" id="samp05-drag_02">Cu</li>
+							<li class="drag-option" id="samp05-drag_03">Sn</li>
+							<li class="drag-option" id="samp05-drag_04">Mg</li>
+							<li class="drag-option" id="samp05-drag_05">Ag</li>
+						</ul>
+
+						<p style="position:absolute;left:200px;top:30px;">Least reactive (reacts with no other metal ions)</p>
+						<p style="position:absolute;left:200px;top:185px;">Most reactive (reacts with all other metal ions)</p>
+
+						<input type="hidden" name="samp05" value="">
+
+						<div class="results" id="results-samp05">Incorrect. the correct order is (from least to most reactive): Ag, Cu, Sn, Zn, Mg.</div>
+
+						
+					</div>
+
+					
+
+					<h3 class="question-number">Question 6</h3>
+					<div class="question-wrapper fill-in" id="samp06">
+						<div class="hint">
+							<a href='#' class='tooltip'>?<span>Remember, significant figures mean something blah blah blah blah blah blah blah blah</span></a>
+						</div>
+						
+						<p class="question">Possible answers are five, 5, 5.0.</p>
+
+						<input type="text" name="samp06">
+						
+						<div class="results" id="results-samp06">Incorrect. The correct answer is 5.</div>
 					</div>
 
 					
@@ -432,8 +466,6 @@
 	</div>
 	<!-- JavaScript at the bottom for fast page loading -->
 	<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
-	<script>window.jQuery || document.write("<script src='assets/common/js/libs/jquery-1.5.1.min.js'>\x3C/script>")</script>
 
 	<!-- load jquery ui libraries-- dependency for star rating plugin -->
 	<!-- can also load from google: https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js -->
