@@ -1,0 +1,274 @@
+<!doctype html>
+
+<!-- Including the elements on this page will allow you to use the ChemCollective question system. The question types are designed to be mix-and-match, so that any number of questions in any order and any type can be on each page. -->
+<head>
+	<meta charset="utf-8">
+
+	<title>Sample Test</title>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-language" content="en" />
+	
+	<meta name="description" content= "Samples of Quizzing Questions" /> 
+
+	<!-- jQuery and jQuery UI -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
+	<!-- stylesheet -->
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+
+	<script>
+		// Record the answers to the questions on the page in this variable. The answers should be in the following format: {"question 1 id attr":question 1 answer,"question 2 id attr":question 2 answer,...} Each type of question has a different format for the answer:
+		// 	Multiple-choice (1 possible answer): "value attribute of correct option"
+		// 	Diagram labelling, Matching: {"id attr of box 1":"id attr of matching label","id attr of box 2":"id attr of matching label",etc...}
+		// 	Multiple-select (1+ possible answers):["value attr of correct option 1","value attr of correct option 2",etc....]
+		// 	Ordering/Arranging:["id attr of first/top item","id attr of second item",....."id attr of last/bottom item"]  <  in the CORRECT order
+		// 	Fill in the blank:["acceptable answer 1","acceptable answer 2","acceptable answer 3"]
+		var answers = {"samp01":"A","samp02":{"samp02-drop_01":"anode","samp02-drop_02":"electrons-right","samp02-drop_03":"salt-bridge","samp02-drop_04":"cathode","samp02-drop_05":"metal-salt"},"samp03":{"samp03-drop_01":"dipole","samp03-drop_02":"acid","samp03-drop_03":"titration"},"samp04":["A","D","E"],"samp05":["samp05-drag_05","samp05-drag_02","samp05-drag_03","samp05-drag_01","samp05-drag_04"],"samp06":["five","5","5.0"]};
+	</script>
+
+	<!-- answer checking script -->
+	<script src="autograding.js"></script>
+
+
+</head>
+
+<body>
+	<!-- The questions on the page should be included within a form -->
+	<form onsubmit="return checkAnswers();">
+		<h1>Sample Test</h1>
+
+		<div id="score"></div>
+
+		<h3 class="question-number">Question 1</h3>
+		<!-- be sure to have a unique identifier for EVERY different question -->
+		<div class="question-wrapper multiple-choice" id="samp01"> 
+
+			<!-- remove this div if you do not wish to display a hint -->
+			<div class="hint">
+				<a href='#' class='tooltip'>?<span>Hint text - can be multiple lines</span></a>
+			</div>
+			
+			<p class="question">The universal gas constant is approximately 0.0821 L atm mol<sup>-1</sup> K<sup>-1</sup>. How many significant figures are given here?</p>
+
+			<ol class="multiple-choice">
+				<li>
+					<!-- The for attr for each label and the name attr for each input should be the same as the question's unique id. Each input's value within a single question should be unique. -->
+					<label for="samp01"><input type="radio" name="samp01" value="A">  3</label>
+				</li>
+
+				<li>
+					<label for="samp01"><input type="radio" name="samp01" value="B">  4</label>
+				</li>
+
+				<li>
+					<label for="samp01"><input type="radio" name="samp01" value="C">  5</label>
+				</li>
+			</ol>
+			
+			<!-- Within this div, write the text that should display when the student gets the answer wrong. Should include the correct answer and an explanation if desired -->
+			<div class="results" id="results-samp01">Incorrect. The correct answer is A.</div>
+		</div>
+
+
+		<h3 class="question-number">Question 2</h3>
+		<div class="question-wrapper match" id="samp02">
+			<div class="hint">
+				<a href='#' class='tooltip'>?<span>Hint text</span></a>
+			</div>
+
+			<p class="question">Match the following labels to the diagram. You will not use all of the labels.</p>
+			<div class="match-container">
+				<!-- The empty boxes, image, and arrows/lines must be positioned manually (lines can be drawn on image if desired) -->
+				<img height="292px" width="400px" style="margin-left:100px;" src="galvanic-20cell-match.png"/>
+				<hr style="width:100px;transform:rotate(-50deg);-ms-transform:rotate(-50deg);-moz-transform:rotate(-50deg);-webkit-transform:rotate(-50deg);-o-transform:rotate(-50deg);bottom:118px;left:100px;"></hr>
+				<!-- Each empty box should have it's own unique identifier -->
+				<div class="droppable" id="samp02-drop_01" style="bottom:50px;"></div>
+				<hr style="width:50px;transform:rotate(60deg);-ms-transform:rotate(60deg);-moz-transform:rotate(60deg);-webkit-transform:rotate(60deg);-o-transform:rotate(60deg);bottom:250px;left:210px;"></hr>
+				<div class="droppable" id="samp02-drop_02" style="bottom:250px;left:75px;"></div>
+				<hr style="width:75px;transform:rotate(120deg);-ms-transform:rotate(120deg);-moz-transform:rotate(120deg);-webkit-transform:rotate(120deg);-o-transform:rotate(120deg);bottom:230px;left:310px;"></hr>
+				<div class="droppable" id="samp02-drop_03" style="bottom:250px;left:350px;"></div>
+				<hr style="width:75px;transform:rotate(-140deg);-ms-transform:rotate(-140deg);-moz-transform:rotate(-140deg);-webkit-transform:rotate(-140deg);-o-transform:rotate(-140deg);bottom:140px;left:431px;"></hr>
+				<div class="droppable" id="samp02-drop_04" style="bottom:100px;left:500px;"></div>
+				<hr style="width:75px;transform:rotate(-150deg);-ms-transform:rotate(-150deg);-moz-transform:rotate(-150deg);-moz-transform:rotate(-150deg);-webkit-transform:rotate(-150deg);-o-transform:rotate(-150deg);bottom:48px;left:401px;"></hr>
+				<div class="droppable" id="samp02-drop_05" style="bottom:25px;left:475px;"></div>
+			</div>
+
+			<!-- the id for the labels can describe the label, or be random, but it must be unique -->
+			<div class="draggable" id="anode">Anode</div>
+			<div class="draggable" id="cathode">Cathode</div>
+			<div class="draggable" id="salt-bridge">Salt Bridge</div>
+			<div class="draggable" id="metal-salt">Metal Salt</div>
+			<div class="draggable" id="electrons-right">Electrons Flow >>></div>
+			<div class="draggable" id="electrons-left">Electrons Flow <<<</div>
+			
+			<!-- the names for these inputs should be the SAME as the ids for the corresponding empty boxes -->
+			<input type="hidden" name="samp02-drop_01" id="samp02-inputdrop_01" value="">
+			<input type="hidden" name="samp02-drop_02" id="samp02-inputdrop_02" value="">
+			<input type="hidden" name="samp02-drop_03" id="samp02-inputdrop_03" value="">
+			<input type="hidden" name="samp02-drop_04" id="samp02-inputdrop_04" value="">
+			<input type="hidden" name="samp02-drop_05" id="samp02-inputdrop_05" value="">
+			
+			<div class="results" id="results-samp02">Incorrect. The correct answers are (clockwise, from bottom left): Anode, Electrons Flow >>>, Salt Bridge, Cathode, Metal Salt.</div>
+		</div>
+		
+		<h3 class="question-number">Question 3</h3>
+		<div class="question-wrapper match" id="samp03">
+			<div class="hint">
+				<a href='#' class='tooltip'>?<span>Hint text</span></a>
+			</div>
+
+			<p class="question">Match the terms on the left to the corresponding definitions on the right.</p>
+			<div class="match-container">
+				<ul class="match-list">
+					<div>
+						<div class="droppable" id="samp03-drop_01"></div>
+						<div class="definition"><p>Refers to the separation of charge between two covalently bonded atoms.</p></div>
+					</div>
+					<div>
+						<div class="droppable" id="samp03-drop_02"></div>
+						<div class="definition"><p>A substance that produces H+(aq) ions in aqueous solution.</p></div>
+					</div>
+					<div>
+						<div class="droppable" id="samp03-drop_03"></div>
+						<div class="definition"><p>A procedure in which one solution is added to another solution until the chemical reactin between the two solutes is complete; the concentration of one solution is known and that of the other is unknown.</p></div>
+					</div>
+				</ul>
+			</div>
+
+			<div class="draggable" id="acid">Acid</div>
+			<div class="draggable" id="titration">Titration</div>
+			<div class="draggable" id="dipole">Dipole</div>
+			
+			<input type="hidden" name="samp03-drop_01" id="samp03-inputdrop_01" value="">
+			<input type="hidden" name="samp03-drop_02" id="samp03-inputdrop_02" value="">
+			<input type="hidden" name="samp03-drop_03" id="samp03-inputdrop_03" value="">
+			
+			<div class="results" id="results-samp03">Incorrect. The correct answers are (from top to bottom): Dipole, Acid, Titration.</div>
+		</div>
+
+		<h3 class="question-number">Question 4</h3>
+		<div class="question-wrapper select-all" id="samp04">
+			<div class="hint">
+				<a href='#' class='tooltip'>?<span>Look at the table of data to determine which experiments have conflicting results in terms of their activities.</span></a>
+			</div>
+			
+			<p class="question">A student performed a set of experiments similar to the ones in the above simulation and recorded the following data. The instructor reviewed the student's data and suggested that some of the experiments should be repeated. Based upon the table of results below, which experiments should be repeated? (check all that apply)</p>
+
+			<!-- Other elements can be added to any of the questions -->
+			<table class="reaction-table">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Fe</th>
+						<th>Pb</th>
+						<th>Cu</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>Fe<sup>2+</sup></th>
+						<td>-- --</td>
+						<td>Deposit on metal</td>
+						<td>No reaction</td>
+					</tr>
+					<tr>
+						<th>Pb<sup>2+</sup></th>
+						<td>Dark deposit on metal</td>
+						<td>-- --</td>
+						<td>No reaction</td>
+					</tr>
+					<tr>
+						<th>Cu<sup>2+</sup></th>
+						<td>Dark deposit on metal, Soln changes color</td>
+						<td>Dark deposit on metal, Soln changes color</td>
+						<td>-- --</td>
+					</tr>
+				</tbody>
+			</table>
+
+			</table>
+
+			<ol class="select-all">
+				<li>
+					A.  <label for="samp04"><input type="checkbox" name="samp04" value="A">  Fe metal strip in Zn<sup>+2</sup></label>
+				</li>
+
+				<li>
+					B.  <label for="samp04"><input type="checkbox" name="samp04" value="B">  Cu metal strip in Fe<sup>+2</sup></label>
+				</li>
+
+				<li>
+					C.  <label for="samp04"><input type="checkbox" name="samp04" value="C">  Zn metal strip in Cu<sup>+2</sup></label>
+				</li>
+
+				<li>
+					D.  <label for="samp04"><input type="checkbox" name="samp04" value="D">  Fe metal strip in Cu<sup>+2</sup></label>
+				</li>
+
+				<li>
+					E.  <label for="samp04"><input type="checkbox" name="samp04" value="E">  Cu metal strip in Zn<sup>+2</sup></label>
+				</li>
+
+				<li>
+					F.  <label for="samp04"><input type="checkbox" name="samp04" value="F">  Zn metal strip in Fe<sup>+2</sup></label>
+				</li>
+			</ol>
+			
+			<div class="results" id="results-samp04">Incorrect. The correct answers are A, D, and E.</div>
+		</div>
+
+		
+
+		<h3 class="question-number">Question 5</h3>
+		<div class="question-wrapper arrange" id="samp05">
+			<div class="hint">
+				<a href='#' class='tooltip'>?<span>Hint text</span></a>
+			</div>
+
+			<p class="question">Based on this data, can you arrange the metals from least reactive to most reactive?</p>
+
+			<ul class="sortable" id="sort-samp05">
+				<!-- each item should have a unique identifier beginning with "questionid-" -->
+				<li class="drag-option" id="samp05-drag_01">Zn</li>
+				<li class="drag-option" id="samp05-drag_02">Cu</li>
+				<li class="drag-option" id="samp05-drag_03">Sn</li>
+				<li class="drag-option" id="samp05-drag_04">Mg</li>
+				<li class="drag-option" id="samp05-drag_05">Ag</li>
+			</ul>
+
+			<p style="position:absolute;left:200px;top:30px;">Least reactive (reacts with no other metal ions)</p>
+			<p style="position:absolute;left:200px;top:185px;">Most reactive (reacts with all other metal ions)</p>
+
+			<input type="hidden" name="samp05" value="">
+
+			<div class="results" id="results-samp05">Incorrect. the correct order is (from least to most reactive): Ag, Cu, Sn, Zn, Mg.</div>
+
+			
+		</div>
+
+		
+
+		<h3 class="question-number">Question 6</h3>
+		<div class="question-wrapper fill-in" id="samp06">
+			<div class="hint">
+				<a href='#' class='tooltip'>?<span>Hint text</span></a>
+			</div>
+			
+			<p class="question">What is 2 + 3?</p>
+
+			<input type="text" name="samp06">
+			
+			<div class="results" id="results-samp06">Incorrect. The correct answer is 5.</div>
+		</div>
+
+		
+
+		<input type="submit" value="submit">	
+	</form>
+</body>
+	
+</html>
+
+
