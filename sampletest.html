@@ -234,11 +234,6 @@
 				<h3 class="question-number">Question 1</h3>
 				<div class="question-wrapper multiple-choice" id="samp01">
 					<form class="tutor" name="samp01" onsubmit="return check($('#samp01'));">
-						<!-- Format for two hints - student clicks on "Hint" to display the next hint. Working on capability for infinite number of hints without the need for complicated syntax -->
-						<div class="hint">
-							<a href='#' class='tooltip' onclick="$(this).children('span:first').css('display','none'); $(this).children('span:nth-child(2)').css('display','block');">Hint<span>First sample hint</span><span style="display:none;">Sample hint text (click 'Hint' for more help)</span></a>
-						</div>
-						
 						<p class="question">The universal gas constant is approximately 0.0821 L atm mol<sup>-1</sup> K<sup>-1</sup>. How many significant figures are given here?</p>
 
 						<ol class="multiple-choice">
@@ -255,8 +250,17 @@
 							</li>
 						</ol>
 						
+						<a href="#" class="showHints">Hint</a>
+						<div class="hint">
+					        <a href="#" class="prevHint"></a>
+					        <span>First hint</span>
+					        <span>Second hint</span>
+					        <span>Third hint hint hint hint hint hint hint hint hint hint hint hint hint hint hint hint hint hint hint hint hint hint</span>
+					        <a href="#" class="nextHint"></a>
+						</div>
 						<div class="results" id="results-samp01"></div>
 						<input type="submit" value="Check" class="submit">	
+						
 					</form>
 				</div>
 
@@ -266,10 +270,6 @@
 				<h3 class="question-number">Question 2</h3>
 				<div class="question-wrapper match" id="samp02">
 					<form class="tutor" name="samp02" onsubmit="return check($('#samp02'));">
-						<div class="hint">
-							<a href='#' class='tooltip' onclick="return false;">Hint<span>Hint hint hint hint hint</span></a>
-						</div>
-
 						<p class="question">Match the following labels to the diagram. You will not use all of the labels.</p>
 						<div class="match-container">
 							<img height="292px" width="400px" style="margin-left:100px;" src="galvanic-20cell-match.png"/>
@@ -299,9 +299,17 @@
 						<input type="hidden" name="samp02-drop_03" id="samp02-inputdrop_03" value="">
 						<input type="hidden" name="samp02-drop_04" id="samp02-inputdrop_04" value="">
 						<input type="hidden" name="samp02-drop_05" id="samp02-inputdrop_05" value="">
-						
+						<a href="#" class="showHints">Hint</a>
+						<div class="hint">
+					        <a href="#" class="prevHint"></a>
+					        <span>First hint</span>
+					        <span>Second hint</span>
+					        <span>Third hint</span>
+					        <a href="#" class="nextHint"></a>
+						</div>
 						<div class="results" id="results-samp02"></div>
 						<input type="submit" value="Check" class="submit">	
+						
 					</form>
 				</div>
 
@@ -311,10 +319,6 @@
 				<h3 class="question-number">Question 3</h3>
 				<div class="question-wrapper match" id="samp03">
 					<form class="tutor" name="samp03" onsubmit="return check($('#samp03'));">
-						<div class="hint">
-							<a href='#' class='tooltip' onclick="return false;">Hint<span>Hint hint hint hint hint</span></a>
-						</div>
-
 						<p class="question">Match the terms on the left to the corresponding definitions on the right.</p>
 						<div class="match-container">
 							<ul class="match-list">
@@ -340,9 +344,18 @@
 						<input type="hidden" name="samp03-drop_01" id="samp03-inputdrop_01" value="">
 						<input type="hidden" name="samp03-drop_02" id="samp03-inputdrop_02" value="">
 						<input type="hidden" name="samp03-drop_03" id="samp03-inputdrop_03" value="">
-						
+
+						<a href="#" class="showHints">Hint</a>
+						<div class="hint">
+					        <a href="#" class="prevHint"></a>
+					        <span>First hint</span>
+					        <span>Second hint text text tex text text text tex text tex tex tex tex text tex tex tex tex tex text</span>
+					        <span>Third hint</span>
+					        <a href="#" class="nextHint"></a>
+						</div>
 						<div class="results" id="results-samp03"></div>
 						<input type="submit" value="Check" class="submit">	
+						
 					</form>
 				</div>
 
@@ -351,11 +364,7 @@
 				
 				<h3 class="question-number">Question 4</h3>
 				<div class="question-wrapper select-all" id="samp04">
-					<form class="tutor" name="samp04" onsubmit="return check($('#samp04'));">
-						<div class="hint">
-							<a href='#' class='tooltip' onclick="return false;">Hint<span>Look at the table of data to determine which experiments have conflicting results in terms of their activities.</span></a>
-						</div>
-						
+					<form class="tutor" name="samp04" onsubmit="return check($('#samp04'));">					
 						<p class="question">A student performed a set of experiments similar to the ones in the above simulation and recorded the following data. The instructor reviewed the student's data and suggested that some of the experiments should be repeated. Based upon the table of results below, which experiments should be repeated? (check all that apply)</p>
 
 						<table class="reaction-table">
@@ -416,9 +425,18 @@
 								F.  <label for="samp04"><input type="checkbox" name="samp04" value="F">  Zn metal strip in Fe<sup>+2</sup></label>
 							</li>
 						</ol>
-						
+
+						<a href="#" class="showHints">Hint</a>
+						<div class="hint">
+					        <a href="#" class="prevHint"></a>
+					        <span>First hint</span>
+					        <span>Second hint</span>
+					        <span>Third hint</span>
+					        <a href="#" class="nextHint"></a>
+						</div>
 						<div class="results" id="results-samp04"></div>
 						<input type="submit" value="Check" class="submit">	
+						
 					</form>
 				</div>
 
@@ -428,10 +446,6 @@
 				<h3 class="question-number">Question 5</h3>
 				<div class="question-wrapper arrange" id="samp05">
 					<form class="tutor" name="samp05" onsubmit="return check($('#samp05'));">
-						<div class="hint">
-							<a href='#' class='tooltip' onclick="return false;">Hint<span>Hint hint hint hint hint</span></a>
-						</div>
-
 						<p class="question">Based on this data, can you arrange the metals from least reactive to most reactive?</p>
 
 						<ul class="sortable" id="sort-samp05">
@@ -447,8 +461,17 @@
 
 						<input type="hidden" name="samp05" value="">
 
+						<a href="#" class="showHints">Hint</a>
+						<div class="hint">
+					        <a href="#" class="prevHint"></a>
+					        <span>First hint</span>
+					        <span>Second hint</span>
+					        <span>Third hint</span>
+					        <a href="#" class="nextHint"></a>
+						</div>
 						<div class="results" id="results-samp05"></div>
 						<input type="submit" value="Check" class="submit">	
+						
 					</form>
 					
 				</div>
@@ -459,17 +482,22 @@
 				
 				<h3 class="question-number">Question 6</h3>
 				<div class="question-wrapper fill-in" id="samp06">
-					<form class="tutor" name="samp06" onsubmit="return check($('#samp06'));">
-						<div class="hint">
-							<a href='#' class='tooltip' onclick="return false;">Hint<span>Remember, significant figures mean something blah blah blah blah blah blah blah blah</span></a>
-						</div>
-						
+					<form class="tutor" name="samp06" onsubmit="return check($('#samp06'));">			
 						<p class="question">What is 2 + 3?</p>
 
 						<input type="text" name="samp06">
-						
+
+						<a href="#" class="showHints">Hint</a>
+						<div class="hint">
+					        <a href="#" class="prevHint"></a>
+					        <span>First hint</span>
+					        <span>Second hint</span>
+					        <span>Third hint</span>
+					        <a href="#" class="nextHint"></a>
+						</div>
 						<div class="results" id="results-samp06"></div>
 						<input type="submit" value="Check" class="submit">	
+						
 					</form>
 				</div>
 

@@ -46,6 +46,49 @@ $(function () {
 
 	$("ul, li").disableSelection();
 
+	$(".hint").data('pos',-1);
+
+	$(".showHints").click(function() {
+		if ($(this).siblings('.hint').data('pos') == -1) {
+		    $(this).siblings('.hint').children('span').first().css('display','inline');
+		    if ($(this).siblings('.hint').children('span').length > 1) {
+		        $(this).siblings('.hint').children('.nextHint').css('display','inline');
+		    }
+		    $(this).siblings('.hint').data('pos',0);
+		    $(this).html('Hide');
+		} else {
+			$(this).siblings('.hint').children().css('display','none');
+			$(this).siblings('.hint').data('pos',-1);
+			$(this).html('Hint');
+		}
+	    return false;
+	});
+
+	$('.nextHint').click(function() {
+	    $(this).parent().children('span').eq($(this).parent().data('pos')).css('display','none');
+	    $(this).parent().data('pos',$(this).parent().data('pos')+1);
+	    $(this).parent().children('span').eq($(this).parent().data('pos')).css('display','inline');
+	    if ($(this).parent().data('pos') == 1) {
+	        $(this).siblings('.prevHint').css('display','inline');
+	    }
+	    if ($(this).parent().data('pos') == $(this).siblings('span').length-1) {
+	        $(this).css('display','none');
+	    }
+	    return false;
+	});
+
+	$('.prevHint').click(function() {
+	    $(this).parent().children('span').eq($(this).parent().data('pos')).css('display','none');
+	    $(this).parent().data('pos',$(this).parent().data('pos')-1);
+	    $(this).parent().children('span').eq($(this).parent().data('pos')).css('display','inline');
+	    if ($(this).parent().data('pos') == $(this).parent().children('span').length-2) {
+	        $(this).siblings('.nextHint').css('display','inline');
+	    }
+	    if ($(this).parent().data('pos') == 0) {
+	        $(this).css('display','none');
+	    }
+	    return false;
+	});
 });
 
 function check(question) { 
