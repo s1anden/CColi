@@ -55,10 +55,7 @@ function check(question) {
 		if ($("input[name='"+question.attr('id')+"']:checked").length == 0){
 			complete = false;
 		} else if (answers[question.attr('id')] != $("input[name='"+question.attr('id')+"']:checked").val()) {
-			$("input[name='"+question.attr('id')+"']").attr('disabled','disabled');
 			correct = false;
-		} else {
-			$("input[name='"+question.attr('id')+"']").attr('disabled','disabled');
 		}
 	} else if (question.hasClass('match')) {
 		jQuery.each(answers[question.attr('id')], function(key,value) {
@@ -67,13 +64,8 @@ function check(question) {
 				return false;
 			} else if ($("input[name='"+key+"']").val() != value) {
 				correct = false;
-				return false;
 			}
 		});
-
-		if (complete == true) {
-			$("#" + question.attr('id') + " .draggable").draggable("disable");
-		} 
 	} else if (question.hasClass('select-all')) {
 		if ($("input[name='"+question.attr('id')+"']:checked").length == 0) {
 			complete = false;
@@ -84,24 +76,16 @@ function check(question) {
 					return false;
 				} 
 			});
-			
-			$("input[name='"+question.attr('id')+"']").attr('disabled','disabled');
 		}
 	} else if (question.hasClass('arrange')) {
-		if (answers[question.attr('id')] == $("input[name='"+question.attr('id')+"']").val()) {
-			$(".sortable").sortable("disable");
-		} else {
+		if (answers[question.attr('id')] != $("input[name='"+question.attr('id')+"']").val()) {
 			correct = false;
-			$("#sort-"+$(this).attr('id')).sortable("disable");
 		}
 	} else if (question.hasClass('fill-in')) {
-		if (jQuery.inArray($("input[name='"+question.attr('id')+"']").val(),answers[question.attr('id')]) != -1) {
-			$("input[name='"+question.attr('id')+"']").attr('disabled','disabled');
-		} else if ($("input[name='"+question.attr('id')+"']").val() == ""){
+		if ($("input[name='"+question.attr('id')+"']").val() == ""){
 			complete = false;
-		} else {
+		} else if (jQuery.inArray($("input[name='"+question.attr('id')+"']").val(),answers[question.attr('id')]) == -1){
 			correct = false;
-			$("input[name='"+question.attr('id')+"']").attr('disabled','disabled');
 		}
 	}
 	if (!complete) {
