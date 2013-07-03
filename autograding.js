@@ -4,7 +4,9 @@
 // 	Multiple-select (1+ possible answers):["value attr of correct option 1","value attr of correct option 2",etc....]
 // 	Ordering/Arranging:["id attr of first/top item","id attr of second item",....."id attr of last/bottom item"]  <  in the CORRECT order
 // 	Fill in the blank:["acceptable answer 1","acceptable answer 2","acceptable answer 3"]
-var answers = {"samp01":"A","samp02":{"samp02-drop_01":"anode","samp02-drop_02":"electrons-right","samp02-drop_03":"salt-bridge","samp02-drop_04":"cathode","samp02-drop_05":"metal-salt"},"samp03":{"samp03-drop_01":"dipole","samp03-drop_02":"acid","samp03-drop_03":"titration"},"samp04":["A","D","E"],"samp05":["samp05-drag_05","samp05-drag_02","samp05-drag_03","samp05-drag_01","samp05-drag_04"],"samp06":["five","5","5.0"]};
+// Prior version; ordering in current version is same as fill in the blank
+// var answers = {"samp01":"A","samp02":{"samp02-drop_01":"anode","samp02-drop_02":"electrons-right","samp02-drop_03":"salt-bridge","samp02-drop_04":"cathode","samp02-drop_05":"metal-salt"},"samp03":{"samp03-drop_01":"dipole","samp03-drop_02":"acid","samp03-drop_03":"titration"},"samp04":["A","D","E"],"samp05":["samp05-drag_05","samp05-drag_02","samp05-drag_03","samp05-drag_01","samp05-drag_04"},"samp06":["five","5","5.0"]};
+var answers = {"samp01":"A","samp02":{"samp02-drop_01":"anode","samp02-drop_02":"electrons-right","samp02-drop_03":"salt-bridge","samp02-drop_04":"cathode","samp02-drop_05":"metal-salt"},"samp03":{"samp03-drop_01":"dipole","samp03-drop_02":"acid","samp03-drop_03":"titration"},"samp04":["A","D","E"],"samp05":{"samp05-drop_01":"ag","samp05-drop_02":"cu","samp05-drop_03":"sn","samp05-drop_04":"zn","samp05-drop_05":"mg"},"samp06":["five","5","5.0"]};
 var incorrect = {"samp01":"The correct answer is A.","samp02":"The correct answers are (clockwise, from bottom left: Anode, Electrons >>>, Salt Bridge, Cathode, Metal Salt.","samp03":"The correct answers are (top to bottom): Dipole, Acid, Titration.","samp04":"The correct answers are A, D, and E.","samp05":"The correct answers are (top to bottom): Ag, Cu, Sn, Zn, Mg.","samp06":"The correct answer is 5."};
 
 $(function () {
@@ -99,7 +101,7 @@ function check(question) {
 			complete = false;
 		} else if (answers[question.attr('id')] != $("input[name='"+question.attr('id')+"']:checked").val()) {
 			correct = false;
-		}
+		} 
 	} else if (question.hasClass('match')) {
 		jQuery.each(answers[question.attr('id')], function(key,value) {
 			if ($("input[name='"+key+"']").val() == "") {
